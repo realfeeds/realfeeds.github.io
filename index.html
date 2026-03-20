@@ -82,107 +82,66 @@
             </div>
 
             <div class="carousel-container">
-                <button class="carousel-btn prev-btn" aria-label="Previous">&lsaquo;</button>
-                <div class="carousel-track-wrapper">
-                    <div class="carousel-track">
-                        <!-- Carousel Items -->
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="card-img-placeholder">Project 1</div>
-                                <h3>Modern Workspace</h3>
-                                <p>A minimalistic approach to organizing developer environments.</p>
+                <div class="carousel-track-wrapper marquee-wrapper">
+                    <div class="marquee-track" id="marquee-track">
+                        <div class="marquee-group">
+                            <!-- Carousel Items -->
+                            <!-- To add a new project, copy a 'carousel-item' block below. -->
+                            <div class="carousel-item">
+                                <div class="card">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+1+Image" alt="Modern Workspace" class="carousel-img">
+                                    <h3>Modern Workspace</h3>
+                                    <p>A minimalistic approach to organizing developer environments.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="card-img-placeholder">Project 2</div>
-                                <h3>System UI</h3>
-                                <p>Designing intuitive interfaces for complex applications.</p>
+                            <div class="carousel-item">
+                                <div class="card">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+2+Image" alt="System UI" class="carousel-img">
+                                    <h3>System UI</h3>
+                                    <p>Designing intuitive interfaces for complex applications.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="card">
-                                <div class="card-img-placeholder">Project 3</div>
-                                <h3>Data Visualizer</h3>
-                                <p>Interactive dashboards displaying real-time metrics.</p>
+                            <div class="carousel-item">
+                                <div class="card">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+3+Image" alt="Data Visualizer" class="carousel-img">
+                                    <h3>Data Visualizer</h3>
+                                    <p>Interactive dashboards displaying real-time metrics.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-btn next-btn" aria-label="Next">&rsaquo;</button>
             </div>
         </section>
     </main>
 
     <script>
-        // Carousel logic for Portfolio
-        const track = document.querySelector('.carousel-track');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
+        // Continuous Marquee Logic for Portfolio
+        const marqueeTrack = document.getElementById('marquee-track');
+        if (marqueeTrack) {
+            const group = marqueeTrack.querySelector('.marquee-group');
+            // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
+            const clone1 = group.cloneNode(true);
+            const clone2 = group.cloneNode(true);
+            
+            // Accessibility fix for duplicates
+            clone1.setAttribute("aria-hidden", "true");
+            clone2.setAttribute("aria-hidden", "true");
 
-        if (track && prevBtn && nextBtn) {
-            let currentIndex = 0;
-            let autoPlayInterval;
+            marqueeTrack.appendChild(clone1);
+            marqueeTrack.appendChild(clone2);
 
-            const updateCarousel = () => {
-                const itemWidth = track.querySelector('.carousel-item').offsetWidth + 24; // offsetWidth + gap (1.5rem = 24px)
-                track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-            };
-
-            const moveNext = () => {
-                const totalItems = track.querySelectorAll('.carousel-item').length;
-                const itemsVisible = window.innerWidth <= 600 ? 1 : 2;
-
-                if (currentIndex < totalItems - itemsVisible) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0; // loop back to start
-                }
-                updateCarousel();
-            };
-
-            const startAutoPlay = () => {
-                autoPlayInterval = setInterval(moveNext, 3500); // adjust slide time here
-            };
-
-            const stopAutoPlay = () => {
-                clearInterval(autoPlayInterval);
-            };
-
-            nextBtn.addEventListener('click', () => {
-                moveNext();
-                stopAutoPlay();
-                startAutoPlay();
-            });
-
-            prevBtn.addEventListener('click', () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    const totalItems = track.querySelectorAll('.carousel-item').length;
-                    const itemsVisible = window.innerWidth <= 600 ? 1 : 2;
-                    currentIndex = totalItems - itemsVisible; // loop to end
-                }
-                updateCarousel();
-                stopAutoPlay();
-                startAutoPlay();
-            });
-
-            // Pause on hover or touch
+            // Pause marquee on hover or touch
             const carouselContainer = document.querySelector('.carousel-container');
-            carouselContainer.addEventListener('mouseenter', stopAutoPlay);
-            carouselContainer.addEventListener('mouseleave', startAutoPlay);
-            carouselContainer.addEventListener('touchstart', stopAutoPlay, { passive: true });
-            carouselContainer.addEventListener('touchend', startAutoPlay, { passive: true });
+            const groups = marqueeTrack.querySelectorAll('.marquee-group');
+            
+            const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
+            const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
 
-            // Recalculate on window resize
-            window.addEventListener('resize', () => {
-                currentIndex = 0;
-                updateCarousel();
-            });
-
-            // Initialize auto-play
-            startAutoPlay();
+            carouselContainer.addEventListener('mouseenter', pauseMarquee);
+            carouselContainer.addEventListener('mouseleave', playMarquee);
+            carouselContainer.addEventListener('touchstart', pauseMarquee, { passive: true });
+            carouselContainer.addEventListener('touchend', playMarquee, { passive: true });
         }
 
         // Fetch Medium Posts
