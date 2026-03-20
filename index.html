@@ -89,21 +89,24 @@
                             <!-- To add a new project, copy a 'carousel-item' block below. -->
                             <div class="carousel-item">
                                 <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+1+Image" alt="Modern Workspace" class="carousel-img">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+1+Image"
+                                        alt="Modern Workspace" class="carousel-img">
                                     <h3>Modern Workspace</h3>
                                     <p>A minimalistic approach to organizing developer environments.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+2+Image" alt="System UI" class="carousel-img">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+2+Image"
+                                        alt="System UI" class="carousel-img">
                                     <h3>System UI</h3>
                                     <p>Designing intuitive interfaces for complex applications.</p>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+3+Image" alt="Data Visualizer" class="carousel-img">
+                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+3+Image"
+                                        alt="Data Visualizer" class="carousel-img">
                                     <h3>Data Visualizer</h3>
                                     <p>Interactive dashboards displaying real-time metrics.</p>
                                 </div>
@@ -123,7 +126,7 @@
             // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
             const clone1 = group.cloneNode(true);
             const clone2 = group.cloneNode(true);
-            
+
             // Accessibility fix for duplicates
             clone1.setAttribute("aria-hidden", "true");
             clone2.setAttribute("aria-hidden", "true");
@@ -134,7 +137,7 @@
             // Pause marquee on hover or touch
             const carouselContainer = document.querySelector('.carousel-container');
             const groups = marqueeTrack.querySelectorAll('.marquee-group');
-            
+
             const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
             const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
 
