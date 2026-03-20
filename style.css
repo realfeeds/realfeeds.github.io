@@ -271,23 +271,29 @@ body::before {
 .marquee-group {
     display: flex;
     gap: 1.5rem;
-    padding-right: 1.5rem; /* Seamless gap spacer */
+    padding-right: 1.5rem;
+    /* Seamless gap spacer */
     animation: scrollMarquee 20s linear infinite;
 }
 
 @keyframes scrollMarquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-100%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
 }
 
 .carousel-item {
-    width: 350px; 
+    width: 350px;
     flex-shrink: 0;
 }
 
 @media (max-width: 600px) {
     .carousel-item {
-        width: 280px; 
+        width: 280px;
     }
 }
 
