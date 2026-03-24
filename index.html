@@ -111,7 +111,7 @@
     </main>
 
     <!-- Modal for Carousel Vitae -->
-    <div class="modal-overlay" id="cv-modal">
+    <div class="modal-overlay" id="cv-modal" style="z-index: 105;">
         <div class="modal-content">
             <button class="modal-close" id="modal-close">&times;</button>
             <div class="modal-gallery">
@@ -176,8 +176,8 @@
                     dot.classList.toggle('active', idx === currentImageIndex);
                 });
 
-                galleryPrev.style.display = currentModalImages.length > 1 ? 'block' : 'none';
-                galleryNext.style.display = currentModalImages.length > 1 ? 'block' : 'none';
+                galleryPrev.style.display = currentModalImages.length > 1 ? 'flex' : 'none';
+                galleryNext.style.display = currentModalImages.length > 1 ? 'flex' : 'none';
             } else {
                 modalImg.style.display = 'none';
                 document.querySelector('.modal-gallery').style.display = 'none';
@@ -186,12 +186,14 @@
             }
         }
 
-        galleryPrev.addEventListener('click', () => {
+        galleryPrev.addEventListener('click', (e) => {
+            e.stopPropagation();
             currentImageIndex = (currentImageIndex - 1 + currentModalImages.length) % currentModalImages.length;
             updateModalImage();
         });
 
-        galleryNext.addEventListener('click', () => {
+        galleryNext.addEventListener('click', (e) => {
+            e.stopPropagation();
             currentImageIndex = (currentImageIndex + 1) % currentModalImages.length;
             updateModalImage();
         });

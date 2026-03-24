@@ -1,9 +1,33 @@
 {
   "projects": [
     {
+      "title": "The Warrior and Best Tribe Lead Self 2025",
+      "date": "2025",
+      "description": "One of the 10 The Warrior awardees for best performance in assignments and meetings. I also led Tribe 13 to Best Tribe, but I can't take all the credit, my tribemates were very active and cooperative",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Ganesha Awards Project",
+      "date": "",
+      "description": "Wow.",
+      "link": "",
+      "unlisted": true,
+      "pictures": []
+    },
+    {
+      "title": "Bandung SketchWalk",
+      "date": "",
+      "description": "Sketching Bandung, the most romantic city in all of Indonesia",
+      "link": "",
+      "unlisted": true,
+      "pictures": []
+    },
+    {
       "title": "YearBook 2024 Committee",
       "date": "May 2024",
-      "description": "Wrote some articles for our yearbook",
+      "description": "Wrote some articles for our 90's-magazine-themed yearbook",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -33,7 +57,7 @@
     {
       "title": "FOKUS 2025",
       "date": "Jun 2025",
-      "description": "Interruption! My favorite part was when ****** and ******. We also **** and **** for ******.",
+      "description": "Interruption! My favorite part was when ****** and ******. We also **** and **** for ******. Though, I could've went without the ******",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -57,7 +81,7 @@
     {
       "title": "Best Sikomat Practicant",
       "date": "Dec 2025",
-      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum. I got >95 for each module except this one time I didn't submit properly, whoops.",
+      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum. I got >95 for each module except this one time I didn't submit properly, whoops",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -68,7 +92,7 @@
     {
       "title": "Events Staff for AKSARA",
       "date": "Sep 2025",
-      "description": "Deltavarya's Teaching Initiative",
+      "description": "A mathematics education initiative",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -89,7 +113,7 @@
     },
     {
       "title": "Regional Camp 2025",
-      "date": "",
+      "date": "Nov 2025",
       "description": "3-day camp from TELADAN's Lead Self Program. Super fun material, discussions, and... \"challenges\"",
       "link": "",
       "unlisted": false,
@@ -119,9 +143,10 @@
       "link": "",
       "unlisted": false,
       "pictures": [
+        "assets/images/29df86c6.png",
         "assets/images/f0fe84dc.png"
       ],
-      "thumbnail": "assets/images/f0fe84dc.png"
+      "thumbnail": "assets/images/29df86c6.png"
     },
     {
       "title": "Research and Development Staff MATHCO ITB",
@@ -140,7 +165,11 @@
       "description": "Reached out as one of the first live-class tutors for Gradient Academy. I taught mathematics for ITB's pretest (algebra and precalc mostly) with overall positive feedback. I also contributed to their problem bank via problem transcription and solution writing.",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/eba42e13.png",
+        "assets/images/7d252ead.png"
+      ],
+      "thumbnail": "assets/images/eba42e13.png"
     },
     {
       "title": "Computational Thinking Practicum Assistant",
@@ -219,7 +248,7 @@
     {
       "title": "Staff of ITB Mathematics Olympiad",
       "date": "",
-      "description": "Proposed Algebra and Combinatorics problems",
+      "description": "Proposed Algebra and Combinatorics problems. Also monitored the competition. Oh, and I made a problem breakdown post",
       "link": "",
       "unlisted": false,
       "pictures": []
@@ -286,7 +315,7 @@
       "thumbnail": "assets/images/95ec48ed.png"
     },
     {
-      "title": "Student Body",
+      "title": "Student Body SMA SKC",
       "date": "Dec 2022 - Nov 2023",
       "description": "Member of Communication and Information Division",
       "link": "",
@@ -318,7 +347,7 @@
     {
       "title": "Most Outstanding First Year Student of FMIPA",
       "date": "Aug 2025",
-      "description": "Best academic performance among ITB's Mathematics and Natural Science (FMIPA) students during the first year",
+      "description": "Absolute best academic performance among 400+ ITB's Mathematics and Natural Science (FMIPA) students during the first year",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -330,7 +359,7 @@
     {
       "title": "NEURONAL: Virtual Study Assistant",
       "date": "Apr 2024",
-      "description": "2nd best Final Project in product development (NEURONAL: Virtual Study Assistant). An LLM-based study buddy before it was cool",
+      "description": "2nd best Final Project in product development (NEURONAL: Virtual Study Assistant). Prompt engineered an LLM-based study buddy before it was cool",
       "link": "",
       "unlisted": false,
       "pictures": [
