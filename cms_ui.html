@@ -255,6 +255,10 @@
         .thumbnail-badge { position: absolute; top: 0.5rem; left: 0.5rem; background: rgba(168, 85, 247, 0.9); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; pointer-events: none; }
         .remove-img { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(239, 68, 68, 0.9); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
         .remove-img:hover { transform: scale(1.1); }
+        .move-img { position: absolute; bottom: 0.5rem; background: rgba(15, 23, 42, 0.85); color: white; border: none; width: 26px; height: 26px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); font-size: 1.25rem; line-height: 1; }
+        .move-img:hover { background: var(--accent-color); }
+        .move-left { left: 0.5rem; }
+        .move-right { right: 0.5rem; }
         .add-image-btn { aspect-ratio: 1; border: 2px dashed var(--border-color); border-radius: 8px; background: transparent; color: var(--text-secondary); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; transition: var(--transition); }
         .add-image-btn:hover { border-color: var(--accent-color); color: var(--accent-color); background-color: rgba(168, 85, 247, 0.05); }
         .add-image-btn svg { width: 32px; height: 32px; }
@@ -276,6 +280,9 @@
         </div>
         <div class="header-actions">
             <input type="text" id="searchInput" placeholder="Search titles..." class="search-bar">
+            <button class="btn-primary" id="sortDateBtn" style="background: linear-gradient(to right, #3b82f6, #2563eb); box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);">
+                <span style="font-size:1.0rem; vertical-align:middle; margin-right:2px;">⏱️</span> Sort by Date
+            </button>
             <button class="btn-primary" id="openModalBtn">
                 <span style="font-size:1.1rem; vertical-align:middle; margin-right:4px;">+</span> Add Project
             </button>
@@ -328,6 +335,17 @@
 
     <div class="toast" id="toast">Successfully published!</div>
 
+    <!-- Image Preview Modal -->
+    <div class="modal-overlay" id="previewModal" style="z-index: 200;">
+        <div style="position: relative; max-width: 90vw; max-height: 90vh;">
+            <button class="close-btn" id="closePreviewBtn" style="top: -2.5rem; right: -1rem; color: white;">&times;</button>
+            <img id="previewImg" src="" style="max-width: 100%; max-height: 80vh; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <div style="text-align: center; margin-top: 1rem;">
+                <a id="downloadPreviewBtn" href="" download="image.jpg" class="btn-primary" style="text-decoration: none; display: inline-block;">Download Image</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Gallery Logic
         const galleryContainer = document.getElementById('galleryContainer');
@@ -365,6 +383,9 @@
                         ? `<img src="${thumb}" class="project-img" alt="${project.title}">` 
                         : `<div class="project-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem;">[NO IMAGE]</div>`;
 
+                    card.onclick = () => openEdit(index);
+                    card.style.cursor = 'pointer';
+
                     card.innerHTML = `
                         ${imgTag}
                         <div class="project-info">
@@ -374,15 +395,14 @@
                             </div>
                             <div class="project-meta">
                                 <div style="display: flex; flex-direction: column; gap: 0.25rem; margin-right: 0.5rem;">
-                                    <button class="icon-btn" title="Move Up" onclick="moveProject(${index}, -1)" ${isFirst ? 'disabled' : ''}>▲</button>
-                                    <button class="icon-btn" title="Move Down" onclick="moveProject(${index}, 1)" ${isLast ? 'disabled' : ''}>▼</button>
+                                    <button class="icon-btn" title="Move Up" onclick="event.stopPropagation(); moveProject(${index}, -1)" ${isFirst ? 'disabled' : ''}>▲</button>
+                                    <button class="icon-btn" title="Move Down" onclick="event.stopPropagation(); moveProject(${index}, 1)" ${isLast ? 'disabled' : ''}>▼</button>
                                 </div>
-                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-right: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-right: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);" onclick="event.stopPropagation();">
                                     <input type="checkbox" style="accent-color: var(--accent-color); width: 1.15rem; height: 1.15rem;" ${project.unlisted ? 'checked' : ''} onchange="toggleUnlisted(${index}, this.checked)">
                                     Unlisted
                                 </label>
-                                <button class="edit-btn" onclick="openEdit(${index})">Edit</button>
-                                <button class="delete-btn" onclick="deleteProject(${index})">Delete</button>
+                                <button class="delete-btn" onclick="event.stopPropagation(); deleteProject(${index})">Delete</button>
                             </div>
                         </div>
                     `;
@@ -464,6 +484,32 @@
             }
         };
 
+        const sortDateBtn = document.getElementById('sortDateBtn');
+        sortDateBtn.addEventListener('click', async () => {
+            if(!confirm("Automatically sort all projects by date? This will permanently parse and reshuffle your JSON array descendingly from newest to oldest.")) return;
+            const originalHTML = sortDateBtn.innerHTML;
+            sortDateBtn.innerHTML = 'Sorting...';
+            sortDateBtn.disabled = true;
+            try {
+                const res = await fetch('/api/sort_by_date', { method: 'POST' });
+                if (res.ok) {
+                    await fetchGallery();
+                    const t = document.getElementById('toast');
+                    t.innerText = "Projects sorted successfully!";
+                    t.classList.add('show');
+                    setTimeout(() => { t.classList.remove('show'); t.innerText = "Successfully published!"; }, 3000);
+                } else {
+                    alert('Sort failed on the server.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection error resolving sort.');
+            } finally {
+                sortDateBtn.innerHTML = originalHTML;
+                sortDateBtn.disabled = false;
+            }
+        });
+
         fetchGallery();
 
         // Modal Logic
@@ -524,6 +570,8 @@
                 
                 const img = document.createElement('img');
                 img.src = pic.base64 || pic.value;
+                img.style.cursor = 'zoom-in';
+                img.onclick = () => previewImage(img.src);
                 
                 const removeBtn = document.createElement('button');
                 removeBtn.className = 'remove-img';
@@ -542,6 +590,36 @@
                     badge.className = 'thumbnail-badge';
                     badge.textContent = 'Thumbnail';
                     div.appendChild(badge);
+                }
+
+                if (index > 0) {
+                    const leftBtn = document.createElement('button');
+                    leftBtn.className = 'move-img move-left';
+                    leftBtn.innerHTML = '&lsaquo;';
+                    leftBtn.title = 'Move Left';
+                    leftBtn.type = 'button';
+                    leftBtn.onclick = () => {
+                        const temp = pictures[index - 1];
+                        pictures[index - 1] = pictures[index];
+                        pictures[index] = temp;
+                        renderImages();
+                    };
+                    div.appendChild(leftBtn);
+                }
+
+                if (index < pictures.length - 1) {
+                    const rightBtn = document.createElement('button');
+                    rightBtn.className = 'move-img move-right';
+                    rightBtn.innerHTML = '&rsaquo;';
+                    rightBtn.title = 'Move Right';
+                    rightBtn.type = 'button';
+                    rightBtn.onclick = () => {
+                        const temp = pictures[index + 1];
+                        pictures[index + 1] = pictures[index];
+                        pictures[index] = temp;
+                        renderImages();
+                    };
+                    div.appendChild(rightBtn);
                 }
 
                 imageGrid.insertBefore(div, addImgBtn);
@@ -601,6 +679,22 @@
                 submitBtn.disabled = false;
             }
         });
+
+        // Image Preview Logic
+        const previewModal = document.getElementById('previewModal');
+        const previewImg = document.getElementById('previewImg');
+        const downloadPreviewBtn = document.getElementById('downloadPreviewBtn');
+        
+        document.getElementById('closePreviewBtn').addEventListener('click', () => previewModal.classList.remove('active'));
+        previewModal.addEventListener('click', (e) => {
+            if (e.target === previewModal) previewModal.classList.remove('active');
+        });
+
+        window.previewImage = function(src) {
+            previewImg.src = src;
+            downloadPreviewBtn.href = src;
+            previewModal.classList.add('active');
+        };
     </script>
 </body>
 </html>

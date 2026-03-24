@@ -1,8 +1,220 @@
 {
   "projects": [
     {
+      "title": "FOKUS 2025",
+      "date": "Jun 2025",
+      "description": "Wow.",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/dd6cd6d5.png"
+      ],
+      "thumbnail": "assets/images/dd6cd6d5.png"
+    },
+    {
+      "title": "FMIPA Dean's List 2024",
+      "date": "Sep 2025",
+      "description": "4.0 GPA for semester 1 and 2",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/fbe0ee66.png",
+        "assets/images/b82d7f29.png",
+        "assets/images/63260d66.png"
+      ],
+      "thumbnail": "assets/images/fbe0ee66.png"
+    },
+    {
+      "title": "Best Sikomat Practicant",
+      "date": "Dec 2025",
+      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/f4c614c0.png"
+      ],
+      "thumbnail": "assets/images/f4c614c0.png"
+    },
+    {
+      "title": "Events Staff for AKSARA",
+      "date": "Sep 2025",
+      "description": "Deltavarya's Teaching Initiative",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/2c536577.png"
+      ],
+      "thumbnail": "assets/images/2c536577.png"
+    },
+    {
+      "title": "Logistics Staff for ArtWeek 7",
+      "date": "Oct 2023",
+      "description": "ENCUL7URACTION",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/6fb15d8d.png"
+      ],
+      "thumbnail": "assets/images/6fb15d8d.png"
+    },
+    {
+      "title": "Regional Camp 2025",
+      "date": "",
+      "description": "Part of Lead Self Program",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/c6a39f93.png",
+        "assets/images/5496c39c.png",
+        "assets/images/0d1f7eb4.png"
+      ],
+      "thumbnail": "assets/images/c6a39f93.png"
+    },
+    {
+      "title": "Assistant Facilitator for Lead Self Program",
+      "date": "Jan 2026",
+      "description": "Assistant Facilitator for Lead Self Program",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/cdd0e29c.png",
+        "assets/images/617756c3.png"
+      ],
+      "thumbnail": "assets/images/cdd0e29c.png"
+    },
+    {
+      "title": "Tanoto Scholar",
+      "date": "Jan 2025",
+      "description": "TELADAN Scholarship and Leadership Program awardee",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/f0fe84dc.png"
+      ],
+      "thumbnail": "assets/images/f0fe84dc.png"
+    },
+    {
+      "title": "Research and Development Staff MATHCO ITB",
+      "date": "",
+      "description": "Math problem books, answer sheets, and problem walkthrough videos development",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/28c510f3.png"
+      ],
+      "thumbnail": "assets/images/28c510f3.png"
+    },
+    {
+      "title": "Tutor and Subject Matter Writer for Gradient",
+      "date": "",
+      "description": "Math tutoring, LaTeX-based problem bank",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Computational Thinking Practicum Assistant",
+      "date": "Oct 2025",
+      "description": "Computational Thinking (Python) Practicum Assistant",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Staff of Academics",
+      "date": "Mar 2026",
+      "description": "Problem archival, tutoring management",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Liaison Officer for October Graduation Parade",
+      "date": "Oct 2025",
+      "description": "LO",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/d61cf050.png",
+        "assets/images/f81b402b.png"
+      ],
+      "thumbnail": "assets/images/d61cf050.png"
+    },
+    {
+      "title": "Materials and Methods Division for Micro Project 2025",
+      "date": "Apr 2025",
+      "description": "Researched and presented material regarding used cooking oil and how to reuse them.",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/43d070aa.png",
+        "assets/images/040aa5bc.png"
+      ],
+      "thumbnail": "assets/images/43d070aa.png"
+    },
+    {
+      "title": "Research and Development for Signature Project",
+      "date": "Aug 2025",
+      "description": "Research and Development for Signature Project",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/d386bb3d.png"
+      ],
+      "thumbnail": "assets/images/d386bb3d.png"
+    },
+    {
+      "title": "Research and Development for Green Action Generation",
+      "date": "Oct 2025",
+      "description": "Research and Development for Green Action Generation",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/b846b418.png"
+      ],
+      "thumbnail": "assets/images/b846b418.png"
+    },
+    {
+      "title": "Secretary and Treasurer for Social Project Forum",
+      "date": "Dec 2025",
+      "description": "Secretary and Treasurer for Social Project Forum",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/5a22d18e.png"
+      ],
+      "thumbnail": "assets/images/5a22d18e.png"
+    },
+    {
+      "title": "Staff of ITB Mathematics Olympiad",
+      "date": "",
+      "description": "Proposed Algebra and Combinatorics problems",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Informative Content Staff for Fourier Media",
+      "date": "",
+      "description": "Pop Mathematics exposition",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "Teaching Volunteer for SAMAVAYA",
+      "date": "Nov 2024",
+      "description": "FMIPA ITB 2024's Aksi Angkatan",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/3691e006.png"
+      ],
+      "thumbnail": "assets/images/3691e006.png"
+    },
+    {
       "title": "Best Materials and Methods Staff SCIENTIA 2025",
-      "date": "June 2025 - August 2025",
+      "date": "Jun 2025 - Aug 2025",
       "description": "Student-led orientation for ITB's Faculty of Mathematics and Natural Sciences (FMIPA). Curated materials for new students, assessed their work, and designed games for Scientia \u201925.",
       "link": "",
       "unlisted": false,
@@ -13,7 +225,7 @@
     },
     {
       "title": "Student Volunteer for IASFM 2025",
-      "date": "January 2025",
+      "date": "Jan 2025",
       "description": "International Association for the Study of Forced Migration Conference 2025. Translated for panels. In particular, SMK's was about the role of literary works in displacement issues. Interviewed and documented international panelists and attendees, gaining insight into global forced displacement issues",
       "link": "",
       "unlisted": false,
@@ -33,15 +245,18 @@
     },
     {
       "title": "Best Creative Media Staff TSA ITB 2025",
-      "date": "",
+      "date": "Jul 2025",
       "description": "Best Staff of Creative Media during the First Period of 2025",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/95ec48ed.png"
+      ],
+      "thumbnail": "assets/images/95ec48ed.png"
     },
     {
       "title": "Student Body",
-      "date": "December 2022 - November 2023",
+      "date": "Dec 2022 - Nov 2023",
       "description": "Member of Communication and Information Division",
       "link": "",
       "unlisted": false,
@@ -49,31 +264,41 @@
     },
     {
       "title": "1st Place KM2N",
-      "date": "November 2025",
-      "description": "Calculus competition",
+      "date": "Nov 2025",
+      "description": "Calculus competition hosted by GMM UPI. Imran carried me throughout the online elimination round and I carried during the on-site finale.",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/a5baf439.png"
+      ],
+      "thumbnail": "assets/images/a5baf439.png"
     },
     {
       "title": "3rd Place IMC 2025: Study Case",
-      "date": "October 2025",
+      "date": "Oct 2025",
       "description": "Team-based competition and training in applied mathematics",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/87b35ae8.png"
+      ],
+      "thumbnail": "assets/images/87b35ae8.png"
     },
     {
       "title": "Most Outstanding First Year Student of FMIPA",
-      "date": "August 2025",
+      "date": "Aug 2025",
       "description": "Best academic performance among ITB's Mathematics and Natural Science (FMIPA) students during the first year",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/093165dc.png",
+        "assets/images/a950b617.png"
+      ],
+      "thumbnail": "assets/images/093165dc.png"
     },
     {
       "title": "NEURONAL: Virtual Study Assistant",
-      "date": "April 2024",
+      "date": "Apr 2024",
       "description": "2nd best Final Project in product development (NEURONAL: Virtual Study Assistant)",
       "link": "",
       "unlisted": false,
@@ -81,7 +306,7 @@
     },
     {
       "title": "Best Graduate of XII-IPA",
-      "date": "April 2024",
+      "date": "Apr 2024",
       "description": "Highest overall academic performance",
       "link": "",
       "unlisted": false,
@@ -93,7 +318,10 @@
       "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving.",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/f306b57c.png"
+      ],
+      "thumbnail": "assets/images/f306b57c.png"
     },
     {
       "title": "Semifinalist CHIPS 2023",
@@ -108,11 +336,14 @@
     },
     {
       "title": "2nd Place CHIPS 2022",
-      "date": "November 2022",
+      "date": "Nov 2022",
       "description": "2nd Place National in Competition for High School in Informatics and Problem Solving.",
       "link": "https://informatika.unpar.ac.id/chips/",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/60ff4db0.png"
+      ],
+      "thumbnail": "assets/images/60ff4db0.png"
     }
   ]
 }

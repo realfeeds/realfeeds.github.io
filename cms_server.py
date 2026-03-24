@@ -4,6 +4,7 @@ import json
 import os
 import base64
 import uuid
+import re
 
 PORT = 8080
 
@@ -177,6 +178,53 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
             else:
                 self.send_response(404)
                 self.end_headers()
+        elif self.path == '/api/sort_by_date':
+            def extract_date_score(date_str):
+                if not date_str:
+                    return 0
+                
+                # Extract year
+                years = re.findall(r'\b(20\d\d)\b', str(date_str))
+                year_val = int(years[-1]) if years else 1970
+                
+                # Extract month strictly via map to please type inferences
+                months_map = {
+                    'jan': 1, 'january': 1, 'feb': 2, 'february': 2,
+                    'mar': 3, 'march': 3, 'apr': 4, 'april': 4,
+                    'may': 5, 'jun': 6, 'june': 6, 'jul': 7, 'july': 7,
+                    'aug': 8, 'august': 8, 'sep': 9, 'september': 9,
+                    'oct': 10, 'october': 10, 'nov': 11, 'november': 11,
+                    'dec': 12, 'december': 12
+                }
+                
+                found_month = 1
+                words = re.findall(r'[a-zA-Z]+', str(date_str))
+                for word in words:
+                    wl = word.lower()
+                    if wl in months_map:
+                        found_month = months_map[wl]
+                
+                return (year_val * 100) + found_month
+
+            try:
+                portfolio_file = 'data/portfolio.json'
+                with open(portfolio_file, 'r', encoding='utf-8') as f:
+                    db = json.load(f)
+                
+                db['projects'].sort(key=lambda x: extract_date_score(x.get('date', '')), reverse=True)
+                
+                with open(portfolio_file, 'w', encoding='utf-8') as f:
+                    json.dump(db, f, indent=2)
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                self.end_headers()
+                self.wfile.write(b'{"status":"success"}')
+            except Exception as e:
+                self.send_response(500)
+                self.end_headers()
+                self.wfile.write(b'{"status":"error"}')
+                print("Error sorting:", e)
         else:
             self.send_response(404)
             self.end_headers()

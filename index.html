@@ -78,18 +78,32 @@
 
         <!-- Portfolio Section -->
         <section class="content-section" id="portfolio">
-            <div class="section-header">
-                <h2 class="section-title">Carousel Vitae</h2>
-                <a href="#" class="view-all">View All &rarr;</a>
+            <div class="section-header" style="align-items: flex-start;">
+                <div>
+                    <h2 class="section-title">Carousel Vitae</h2>
+
+                </div>
+                <a href="#" class="view-all" id="open-gallery-btn" style="margin-top: 0.35rem;">View All &rarr;</a>
             </div>
 
             <div class="carousel-container">
                 <div class="carousel-track-wrapper marquee-wrapper">
-                    <div class="marquee-track" id="marquee-track">
-                        <div class="marquee-group" id="marquee-group">
+                    <div class="marquee-track" id="marquee-track-0">
+                        <div class="marquee-group" id="marquee-group-0">
                             <!-- Carousel Items loading dynamically from Google Sheets -->
-                            <p style="color: var(--text-secondary); padding: 2rem;">Loading projects...</p>
+                            <p id="loading-txt" style="color: var(--text-secondary); padding: 2rem;">Loading projects...
+                            </p>
                         </div>
+                    </div>
+                </div>
+                <div class="carousel-track-wrapper marquee-wrapper">
+                    <div class="marquee-track" id="marquee-track-1">
+                        <div class="marquee-group reverse" id="marquee-group-1"></div>
+                    </div>
+                </div>
+                <div class="carousel-track-wrapper marquee-wrapper">
+                    <div class="marquee-track" id="marquee-track-2">
+                        <div class="marquee-group" id="marquee-group-2"></div>
                     </div>
                 </div>
             </div>
@@ -108,8 +122,30 @@
             </div>
             <div class="modal-info">
                 <h3 id="modal-title">Project Title</h3>
-                <span id="modal-date" style="display: block; margin-bottom: 0.5rem; color: var(--accent-color); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;"></span>
+                <span id="modal-date"
+                    style="display: block; margin-bottom: 0.5rem; color: var(--accent-color); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;"></span>
                 <p id="modal-description">Project Description</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Projects Gallery Modal -->
+    <div class="modal-overlay" id="all-projects-modal" style="align-items: flex-start; padding-top: 4rem;">
+        <div class="modal-content" style="max-width: 1200px; width: 95%; max-height: 85vh; overflow-y: auto;">
+            <button class="modal-close" id="all-projects-close">&times;</button>
+            <div
+                style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">All Projects</h2>
+                    <p style="color: var(--text-secondary);">Browse the complete portfolio archive.</p>
+                </div>
+                <input type="text" id="all-projects-search" placeholder="Search titles & descriptions..."
+                    style="padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--surface-color); color: var(--text-primary); width: 100%; max-width: 300px; font-size: 1rem; outline: none; transition: var(--transition);">
+            </div>
+
+            <div id="all-projects-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+                <!-- Cards will be injected here -->
             </div>
         </div>
     </div>
@@ -134,7 +170,7 @@
                 modalImg.style.display = 'block';
                 document.querySelector('.modal-gallery').style.display = 'flex';
                 modalImg.src = currentModalImages[currentImageIndex];
-                
+
                 // Update indicators
                 Array.from(galleryIndicators.children).forEach((dot, idx) => {
                     dot.classList.toggle('active', idx === currentImageIndex);
@@ -171,38 +207,76 @@
         let carouselItemsData = [];
 
         function initCarouselMarquee() {
-            const marqueeTrack = document.getElementById('marquee-track');
-            if (marqueeTrack) {
-                const group = document.getElementById('marquee-group');
-                // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
-                const clone1 = group.cloneNode(true);
-                const clone2 = group.cloneNode(true);
+            const screenWidth = window.innerWidth;
 
-                // Accessibility fix for duplicates
-                clone1.setAttribute("aria-hidden", "true");
-                clone2.setAttribute("aria-hidden", "true");
-                clone1.id = ""; // remove duplicate id
-                clone2.id = ""; // remove duplicate id
+            [0, 1, 2].forEach(i => {
+                const marqueeTrack = document.getElementById(`marquee-track-${i}`);
+                if (marqueeTrack) {
+                    const group = document.getElementById(`marquee-group-${i}`);
 
-                marqueeTrack.appendChild(clone1);
-                marqueeTrack.appendChild(clone2);
+                    let groupWidth = group.offsetWidth;
+                    if (groupWidth === 0) return; // skip empty groups
 
-                // Pause marquee on hover or touch
-                const carouselContainer = document.querySelector('.carousel-container');
-                const groups = marqueeTrack.querySelectorAll('.marquee-group');
+                    // 100% Continuous Scrolling Fix: 
+                    // To avoid visual pop-ins, the base group width itself MUST be wider than the viewport 
+                    // before we calculate animation and clone the whole track.
+                    if (groupWidth < screenWidth * 1.5) {
+                        const originalChildren = Array.from(group.children);
+                        while (group.offsetWidth < screenWidth * 1.5) {
+                            originalChildren.forEach(child => {
+                                group.appendChild(child.cloneNode(true));
+                            });
+                        }
+                    }
 
-                const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
-                const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
+                    // Recalculate true physical width after cloning
+                    groupWidth = group.offsetWidth;
 
-                carouselContainer.addEventListener('mouseenter', pauseMarquee);
-                carouselContainer.addEventListener('mouseleave', playMarquee);
-                carouselContainer.addEventListener('touchstart', pauseMarquee, { passive: true });
-                carouselContainer.addEventListener('touchend', playMarquee, { passive: true });
-            }
+                    // Calculate consistent speed independent of number of projects
+                    const speedPxPerSec = 75; // Adjust this value for base pixel velocity
+                    const duration = Math.max(groupWidth / speedPxPerSec, 5);
+                    group.style.animationDuration = duration + 's';
+
+                    // Provide a random negative delay so each track starts simultaneously at totally different aesthetic phases
+                    const randomDelay = -(Math.random() * duration);
+                    group.style.animationDelay = randomDelay + 's';
+
+                    // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
+                    const clone1 = group.cloneNode(true);
+                    const clone2 = group.cloneNode(true);
+
+                    // Give the clones the same specific speed and offsets
+                    clone1.style.animationDuration = duration + 's';
+                    clone2.style.animationDuration = duration + 's';
+                    clone1.style.animationDelay = randomDelay + 's';
+                    clone2.style.animationDelay = randomDelay + 's';
+
+                    // Accessibility fix for duplicates
+                    clone1.setAttribute("aria-hidden", "true");
+                    clone2.setAttribute("aria-hidden", "true");
+                    clone1.id = ""; // remove duplicate id
+                    clone2.id = ""; // remove duplicate id
+
+                    marqueeTrack.appendChild(clone1);
+                    marqueeTrack.appendChild(clone2);
+                }
+            });
+
+            // Pause marquee on hover or touch
+            const carouselContainer = document.querySelector('.carousel-container');
+            const groups = carouselContainer.querySelectorAll('.marquee-group');
+
+            const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
+            const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
+
+            carouselContainer.addEventListener('mouseenter', pauseMarquee);
+            carouselContainer.addEventListener('mouseleave', playMarquee);
+            carouselContainer.addEventListener('touchstart', pauseMarquee, { passive: true });
+            carouselContainer.addEventListener('touchend', playMarquee, { passive: true });
         }
 
         // Event delegation for opening modals
-        document.getElementById('marquee-track').addEventListener('click', (e) => {
+        document.querySelector('.carousel-container').addEventListener('click', (e) => {
             const card = e.target.closest('.cv-card');
             if (card) {
                 const index = card.getAttribute('data-index');
@@ -218,10 +292,10 @@
             modalDate.textContent = data.date || '';
             modalDate.style.display = data.date ? 'block' : 'none';
             modalDesc.innerHTML = data.desc.replace(/\\n|\n/g, '<br/>');
-            
+
             currentModalImages = data.pictures.length > 0 ? data.pictures : (data.thumbnail ? [data.thumbnail] : []);
             currentImageIndex = 0;
-            
+
             galleryIndicators.innerHTML = '';
             if (currentModalImages.length > 1) {
                 currentModalImages.forEach((_, idx) => {
@@ -243,14 +317,21 @@
             try {
                 const res = await fetch('data/portfolio.json');
                 const data = await res.json();
-                
-                const group = document.getElementById('marquee-group');
-                group.innerHTML = '';
 
-                const items = data.projects.filter(row => row.unlisted !== true && row.title && row.title.trim() !== '');
+                const groups = [
+                    document.getElementById('marquee-group-0'),
+                    document.getElementById('marquee-group-1'),
+                    document.getElementById('marquee-group-2')
+                ];
+                groups.forEach(g => g.innerHTML = '');
+
+                let items = data.projects.filter(row => row.unlisted !== true && row.title && row.title.trim() !== '');
+
+                // Reverse to display chronologically (assumes JSON is newest-at-top)
+                items.reverse();
 
                 if (items.length === 0) {
-                    group.innerHTML = '<p style="color: var(--text-secondary);">No projects available at the moment.</p>';
+                    groups[0].innerHTML = '<p style="color: var(--text-secondary);">No projects available at the moment.</p>';
                     return;
                 }
 
@@ -260,7 +341,7 @@
                     const links = (row.link || '').trim();
                     const date = (row.date || '').trim();
                     const pictures = row.pictures || [];
-                    
+
                     const thumbnail = row.thumbnail || (pictures.length > 0 ? pictures[0] : null);
 
                     return { title, desc, links, date, pictures, thumbnail };
@@ -279,17 +360,84 @@
                             <p>${descPreview}</p>
                         </div>
                     `;
-                    group.appendChild(itemDiv);
+                    groups[index % 3].appendChild(itemDiv);
                 });
 
                 initCarouselMarquee();
             } catch (err) {
                 console.error('Error fetching CV JSON Data:', err);
-                document.getElementById('marquee-group').innerHTML = '<p style="color: var(--text-secondary);">Failed to load portfolio items.</p>';
+                document.getElementById('marquee-group-0').innerHTML = '<p style="color: var(--text-secondary);">Failed to load portfolio items.</p>';
             }
         }
 
         fetchCarouselData();
+
+        // All Projects Gallery Logic
+        const allProjectsModal = document.getElementById('all-projects-modal');
+        const viewAllBtn = document.getElementById('open-gallery-btn');
+        const allProjectsClose = document.getElementById('all-projects-close');
+        const allProjectsGrid = document.getElementById('all-projects-grid');
+        const allProjectsSearch = document.getElementById('all-projects-search');
+
+        document.getElementById('all-projects-search').addEventListener('focus', function () { this.style.borderColor = 'var(--accent-color)'; });
+        document.getElementById('all-projects-search').addEventListener('blur', function () { this.style.borderColor = 'var(--border-color)'; });
+
+        viewAllBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            allProjectsSearch.value = '';
+            renderAllProjectsGallery('');
+            allProjectsModal.classList.add('active');
+            allProjectsModal.scrollTop = 0;
+        });
+
+        allProjectsClose.addEventListener('click', () => allProjectsModal.classList.remove('active'));
+        allProjectsModal.addEventListener('click', (e) => {
+            if (e.target === allProjectsModal) allProjectsModal.classList.remove('active');
+        });
+
+        allProjectsSearch.addEventListener('input', (e) => {
+            renderAllProjectsGallery(e.target.value.toLowerCase());
+        });
+
+        function renderAllProjectsGallery(query) {
+            allProjectsGrid.innerHTML = '';
+            const filtered = carouselItemsData.filter(item => {
+                const txt = (item.title + ' ' + item.desc).toLowerCase();
+                return txt.includes(query);
+            });
+
+            if (filtered.length === 0) {
+                allProjectsGrid.innerHTML = '<p style="color: var(--text-secondary); grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">No projects matched your search.</p>';
+                return;
+            }
+
+            filtered.forEach((item) => {
+                let descPreview = item.desc.length > 100 ? item.desc.substring(0, 100) + '...' : item.desc;
+                const card = document.createElement('div');
+                card.className = 'card cv-card';
+                card.style.cursor = 'pointer';
+                card.style.height = '100%';
+
+                const imgTag = item.thumbnail
+                    ? `<img src="${item.thumbnail}" alt="${item.title}" class="carousel-img" style="aspect-ratio: 16/9;">`
+                    : `<div class="carousel-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem; aspect-ratio: 16/9; background-color: var(--surface-color);">[NO IMAGE]</div>`;
+
+                card.innerHTML = `
+                    ${imgTag}
+                    <div style="display: flex; flex-direction: column; flex-grow: 1;">
+                        <h3 style="margin-top: 1rem;">${item.title}</h3>
+                        ${item.date ? `<span class="blog-date" style="display: block; margin-top: -0.25rem; margin-bottom: 0.5rem;">${item.date}</span>` : ''}
+                        <p style="margin-bottom: 0;">${descPreview}</p>
+                    </div>
+                `;
+
+                card.addEventListener('click', () => {
+                    openModal(item);
+                });
+
+                allProjectsGrid.appendChild(card);
+            });
+        }
 
         // Fetch Medium Posts
         async function fetchMediumBlogs() {
