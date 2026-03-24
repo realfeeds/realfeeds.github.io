@@ -1,6 +1,22 @@
 {
   "projects": [
     {
+      "title": "Intern of Academics HIMATIKA",
+      "date": "Oct 2025 - Mar 2026",
+      "description": "Mostly problem archival and tutor management, I also tutored once. We also did some one-off random stuff like problem proposals for another organization's competition.",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
+      "title": "FMIPA '24 Peer Tutor",
+      "date": "2024",
+      "description": "Physics tutoring",
+      "link": "",
+      "unlisted": false,
+      "pictures": []
+    },
+    {
       "title": "FOKUS 2025",
       "date": "Jun 2025",
       "description": "Wow.",
@@ -60,7 +76,7 @@
     {
       "title": "Regional Camp 2025",
       "date": "",
-      "description": "Part of Lead Self Program",
+      "description": "3-day camp from TELADAN's Lead Self Program. Super fun material, discussions, and... \"challenges\"",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -71,9 +87,9 @@
       "thumbnail": "assets/images/c6a39f93.png"
     },
     {
-      "title": "Assistant Facilitator for Lead Self Program",
+      "title": "Assistant Facilitator for Lead Self Program 2026",
       "date": "Jan 2026",
-      "description": "Assistant Facilitator for Lead Self Program",
+      "description": "The only assistant facilitator from ITB this year. I assess and guide Group 3 of Cohort '26 Tanoto Scholars",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -166,11 +182,12 @@
     {
       "title": "Research and Development for Green Action Generation",
       "date": "Oct 2025",
-      "description": "Research and Development for Green Action Generation",
+      "description": "Researched and made material about sustainable energy for grade schoolers. The other staffs turned it into a book!",
       "link": "",
       "unlisted": false,
       "pictures": [
-        "assets/images/b846b418.png"
+        "assets/images/b846b418.png",
+        "assets/images/77e7168d.png"
       ],
       "thumbnail": "assets/images/b846b418.png"
     },
@@ -215,7 +232,7 @@
     {
       "title": "Best Materials and Methods Staff SCIENTIA 2025",
       "date": "Jun 2025 - Aug 2025",
-      "description": "Student-led orientation for ITB's Faculty of Mathematics and Natural Sciences (FMIPA). Curated materials for new students, assessed their work, and designed games for Scientia \u201925.",
+      "description": "Student-led orientation for ITB's Faculty of Mathematics and Natural Sciences (FMIPA). Curated materials for new students, assessed their work, and designed games for Scientia \u201925. I worked particularly hard for this, especially in meetings and idea development :)",
       "link": "",
       "unlisted": false,
       "pictures": [
