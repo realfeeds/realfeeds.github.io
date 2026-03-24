@@ -55,9 +55,9 @@ body::before {
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1050px;
     margin: 0 auto;
-    padding: 0 1.5rem 4rem;
+    padding: 0 1.25rem 4rem;
 }
 
 /* 1 & 2. Header and Subheading */

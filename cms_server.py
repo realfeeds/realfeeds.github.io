@@ -181,11 +181,11 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
         elif self.path == '/api/sort_by_date':
             def extract_date_score(date_str):
                 if not date_str:
-                    return 0
+                    return 999912 # Pin totally blank/undated entries explicitly to the top of descending sorts
                 
-                # Extract year
+                # Extract year (use the first year found for the start date)
                 years = re.findall(r'\b(20\d\d)\b', str(date_str))
-                year_val = int(years[-1]) if years else 1970
+                year_val = int(years[0]) if years else 1970
                 
                 # Extract month strictly via map to please type inferences
                 months_map = {
@@ -203,6 +203,7 @@ class CMSHandler(http.server.SimpleHTTPRequestHandler):
                     wl = word.lower()
                     if wl in months_map:
                         found_month = months_map[wl]
+                        break # Use the first found month as the start date
                 
                 return (year_val * 100) + found_month
 

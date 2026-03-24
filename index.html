@@ -240,9 +240,13 @@
                     const duration = Math.max(groupWidth / speedPxPerSec, 5);
                     group.style.animationDuration = duration + 's';
 
-                    // Provide a random negative delay so each track starts simultaneously at totally different aesthetic phases
-                    const randomDelay = -(Math.random() * duration);
-                    group.style.animationDelay = randomDelay + 's';
+                    // 100% Continuous Flow Logic: Unify timeline phase staggering.
+                    // By guaranteeing all rows have exactly the same array payload, they share identical pixel widths, 
+                    // achieving mathematically identical scroll speeds. 
+                    // Staggering the time precisely by thirds makes them render as one massively connected "snake".
+                    const phaseOffset = duration * (i / 3);
+                    const unifiedDelay = -phaseOffset;
+                    group.style.animationDelay = unifiedDelay + 's';
 
                     // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
                     const clone1 = group.cloneNode(true);
@@ -251,8 +255,8 @@
                     // Give the clones the same specific speed and offsets
                     clone1.style.animationDuration = duration + 's';
                     clone2.style.animationDuration = duration + 's';
-                    clone1.style.animationDelay = randomDelay + 's';
-                    clone2.style.animationDelay = randomDelay + 's';
+                    clone1.style.animationDelay = unifiedDelay + 's';
+                    clone2.style.animationDelay = unifiedDelay + 's';
 
                     // Accessibility fix for duplicates
                     clone1.setAttribute("aria-hidden", "true");
@@ -354,17 +358,21 @@
                 carouselItemsData.forEach((item, index) => {
                     let descPreview = item.desc.length > 90 ? item.desc.substring(0, 90) + '...' : item.desc;
 
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'carousel-item';
-                    itemDiv.innerHTML = `
-                        <div class="card cv-card" data-index="${index}">
-                            ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" class="carousel-img">` : `<div class="carousel-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem;">[NO IMAGE]</div>`}
-                            <h3 style="margin-top: 1rem;">${item.title}</h3>
-                            ${item.date ? `<span class="blog-date" style="display: block; margin-top: -0.25rem; margin-bottom: 0.5rem;">${item.date}</span>` : ''}
-                            <p>${descPreview}</p>
-                        </div>
-                    `;
-                    groups[index % 3].appendChild(itemDiv);
+                    // Inject the exact same chronological array into EVERY track natively.
+                    // Instead of columnizing them and letting the speeds desync, they are completely synchronized.
+                    [0, 1, 2].forEach(i => {
+                        const itemDiv = document.createElement('div');
+                        itemDiv.className = 'carousel-item';
+                        itemDiv.innerHTML = `
+                            <div class="card cv-card" data-index="${index}">
+                                ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" class="carousel-img">` : `<div class="carousel-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem;">[NO IMAGE]</div>`}
+                                <h3 style="margin-top: 1rem;">${item.title}</h3>
+                                ${item.date ? `<span class="blog-date" style="display: block; margin-top: -0.25rem; margin-bottom: 0.5rem;">${item.date}</span>` : ''}
+                                <p>${descPreview}</p>
+                            </div>
+                        `;
+                        groups[i].appendChild(itemDiv);
+                    });
                 });
 
                 initCarouselMarquee();
