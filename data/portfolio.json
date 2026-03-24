@@ -3,15 +3,18 @@
     {
       "title": "Intern of Academics HIMATIKA",
       "date": "Oct 2025 - Mar 2026",
-      "description": "Mostly problem archival and tutor management, I also tutored once. We also did some one-off random stuff like problem proposals for another organization's competition.",
+      "description": "Mostly problem archival and tutor management, I tutored too. We also did some one-off random stuff like problem proposals for another organization's competition.",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/76493097.png"
+      ],
+      "thumbnail": "assets/images/76493097.png"
     },
     {
       "title": "FMIPA '24 Peer Tutor",
       "date": "2024",
-      "description": "Physics tutoring",
+      "description": "Physics tutoring. As a math student. Because we lacked physics tutors. Because physics is hard",
       "link": "",
       "unlisted": false,
       "pictures": []
@@ -43,7 +46,7 @@
     {
       "title": "Best Sikomat Practicant",
       "date": "Dec 2025",
-      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum",
+      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum. I got >95 for each module except this one time I didn't submit properly, whoops.",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -123,7 +126,7 @@
     {
       "title": "Tutor and Subject Matter Writer for Gradient",
       "date": "",
-      "description": "Math tutoring, LaTeX-based problem bank",
+      "description": "Reached out as one of the first live-class tutors for Gradient Academy. I taught mathematics for ITB's pretest (algebra and precalc mostly) with overall positive feedback. I also contributed to their problem bank via problem transcription and solution writing.",
       "link": "",
       "unlisted": false,
       "pictures": []
@@ -137,7 +140,7 @@
       "pictures": []
     },
     {
-      "title": "Staff of Academics",
+      "title": "Staff of Academics HIMATIKA",
       "date": "Mar 2026",
       "description": "Problem archival, tutoring management",
       "link": "",
