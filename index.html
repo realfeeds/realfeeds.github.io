@@ -12,6 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <!-- Decap CMS Auth -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 
 <body>
@@ -84,33 +86,9 @@
             <div class="carousel-container">
                 <div class="carousel-track-wrapper marquee-wrapper">
                     <div class="marquee-track" id="marquee-track">
-                        <div class="marquee-group">
-                            <!-- Carousel Items -->
-                            <!-- To add a new project, copy a 'carousel-item' block below. -->
-                            <div class="carousel-item">
-                                <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+1+Image"
-                                        alt="Modern Workspace" class="carousel-img">
-                                    <h3>Modern Workspace</h3>
-                                    <p>A minimalistic approach to organizing developer environments.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+2+Image"
-                                        alt="System UI" class="carousel-img">
-                                    <h3>System UI</h3>
-                                    <p>Designing intuitive interfaces for complex applications.</p>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="card">
-                                    <img src="https://placehold.co/600x400/f8fafc/94a3b8?text=Project+3+Image"
-                                        alt="Data Visualizer" class="carousel-img">
-                                    <h3>Data Visualizer</h3>
-                                    <p>Interactive dashboards displaying real-time metrics.</p>
-                                </div>
-                            </div>
+                        <div class="marquee-group" id="marquee-group">
+                            <!-- Carousel Items loading dynamically from Google Sheets -->
+                            <p style="color: var(--text-secondary); padding: 2rem;">Loading projects...</p>
                         </div>
                     </div>
                 </div>
@@ -118,34 +96,200 @@
         </section>
     </main>
 
+    <!-- Modal for Carousel Vitae -->
+    <div class="modal-overlay" id="cv-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-gallery">
+                <button class="gallery-nav gallery-prev" id="gallery-prev">&lsaquo;</button>
+                <img src="" alt="Project Image" class="modal-img" id="modal-img">
+                <button class="gallery-nav gallery-next" id="gallery-next">&rsaquo;</button>
+                <div class="gallery-indicators" id="gallery-indicators"></div>
+            </div>
+            <div class="modal-info">
+                <h3 id="modal-title">Project Title</h3>
+                <span id="modal-date" style="display: block; margin-bottom: 0.5rem; color: var(--accent-color); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;"></span>
+                <p id="modal-description">Project Description</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Continuous Marquee Logic for Portfolio
-        const marqueeTrack = document.getElementById('marquee-track');
-        if (marqueeTrack) {
-            const group = marqueeTrack.querySelector('.marquee-group');
-            // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
-            const clone1 = group.cloneNode(true);
-            const clone2 = group.cloneNode(true);
+        // Modal Logic
+        const modal = document.getElementById('cv-modal');
+        const modalCloseBtn = document.getElementById('modal-close');
+        const modalImg = document.getElementById('modal-img');
+        const modalDate = document.getElementById('modal-date');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-description');
+        const galleryPrev = document.getElementById('gallery-prev');
+        const galleryNext = document.getElementById('gallery-next');
+        const galleryIndicators = document.getElementById('gallery-indicators');
 
-            // Accessibility fix for duplicates
-            clone1.setAttribute("aria-hidden", "true");
-            clone2.setAttribute("aria-hidden", "true");
+        let currentModalImages = [];
+        let currentImageIndex = 0;
 
-            marqueeTrack.appendChild(clone1);
-            marqueeTrack.appendChild(clone2);
+        function updateModalImage() {
+            if (currentModalImages.length > 0) {
+                modalImg.style.display = 'block';
+                document.querySelector('.modal-gallery').style.display = 'flex';
+                modalImg.src = currentModalImages[currentImageIndex];
+                
+                // Update indicators
+                Array.from(galleryIndicators.children).forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentImageIndex);
+                });
 
-            // Pause marquee on hover or touch
-            const carouselContainer = document.querySelector('.carousel-container');
-            const groups = marqueeTrack.querySelectorAll('.marquee-group');
-
-            const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
-            const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
-
-            carouselContainer.addEventListener('mouseenter', pauseMarquee);
-            carouselContainer.addEventListener('mouseleave', playMarquee);
-            carouselContainer.addEventListener('touchstart', pauseMarquee, { passive: true });
-            carouselContainer.addEventListener('touchend', playMarquee, { passive: true });
+                galleryPrev.style.display = currentModalImages.length > 1 ? 'block' : 'none';
+                galleryNext.style.display = currentModalImages.length > 1 ? 'block' : 'none';
+            } else {
+                modalImg.style.display = 'none';
+                document.querySelector('.modal-gallery').style.display = 'none';
+                galleryPrev.style.display = 'none';
+                galleryNext.style.display = 'none';
+            }
         }
+
+        galleryPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + currentModalImages.length) % currentModalImages.length;
+            updateModalImage();
+        });
+
+        galleryNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % currentModalImages.length;
+            updateModalImage();
+        });
+
+        modalCloseBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        let carouselItemsData = [];
+
+        function initCarouselMarquee() {
+            const marqueeTrack = document.getElementById('marquee-track');
+            if (marqueeTrack) {
+                const group = document.getElementById('marquee-group');
+                // Clone the group twice to guarantee smooth infinite scrolling on ultra-wide screens
+                const clone1 = group.cloneNode(true);
+                const clone2 = group.cloneNode(true);
+
+                // Accessibility fix for duplicates
+                clone1.setAttribute("aria-hidden", "true");
+                clone2.setAttribute("aria-hidden", "true");
+                clone1.id = ""; // remove duplicate id
+                clone2.id = ""; // remove duplicate id
+
+                marqueeTrack.appendChild(clone1);
+                marqueeTrack.appendChild(clone2);
+
+                // Pause marquee on hover or touch
+                const carouselContainer = document.querySelector('.carousel-container');
+                const groups = marqueeTrack.querySelectorAll('.marquee-group');
+
+                const pauseMarquee = () => groups.forEach(g => g.style.animationPlayState = 'paused');
+                const playMarquee = () => groups.forEach(g => g.style.animationPlayState = 'running');
+
+                carouselContainer.addEventListener('mouseenter', pauseMarquee);
+                carouselContainer.addEventListener('mouseleave', playMarquee);
+                carouselContainer.addEventListener('touchstart', pauseMarquee, { passive: true });
+                carouselContainer.addEventListener('touchend', playMarquee, { passive: true });
+            }
+        }
+
+        // Event delegation for opening modals
+        document.getElementById('marquee-track').addEventListener('click', (e) => {
+            const card = e.target.closest('.cv-card');
+            if (card) {
+                const index = card.getAttribute('data-index');
+                if (index !== null) {
+                    const data = carouselItemsData[parseInt(index, 10)];
+                    if (data) openModal(data);
+                }
+            }
+        });
+
+        function openModal(data) {
+            modalTitle.innerHTML = data.links ? `<a href="${data.links}" target="_blank" rel="noopener noreferrer">${data.title}</a>` : data.title;
+            modalDate.textContent = data.date || '';
+            modalDate.style.display = data.date ? 'block' : 'none';
+            modalDesc.innerHTML = data.desc.replace(/\\n|\n/g, '<br/>');
+            
+            currentModalImages = data.pictures.length > 0 ? data.pictures : (data.thumbnail ? [data.thumbnail] : []);
+            currentImageIndex = 0;
+            
+            galleryIndicators.innerHTML = '';
+            if (currentModalImages.length > 1) {
+                currentModalImages.forEach((_, idx) => {
+                    const dot = document.createElement('div');
+                    dot.className = 'indicator-dot';
+                    dot.addEventListener('click', () => {
+                        currentImageIndex = idx;
+                        updateModalImage();
+                    });
+                    galleryIndicators.appendChild(dot);
+                });
+            }
+
+            updateModalImage();
+            modal.classList.add('active');
+        }
+
+        async function fetchCarouselData() {
+            try {
+                const res = await fetch('data/portfolio.json');
+                const data = await res.json();
+                
+                const group = document.getElementById('marquee-group');
+                group.innerHTML = '';
+
+                const items = data.projects.filter(row => row.unlisted !== true && row.title && row.title.trim() !== '');
+
+                if (items.length === 0) {
+                    group.innerHTML = '<p style="color: var(--text-secondary);">No projects available at the moment.</p>';
+                    return;
+                }
+
+                carouselItemsData = items.map(row => {
+                    const title = (row.title || '').trim();
+                    const desc = (row.description || '').trim();
+                    const links = (row.link || '').trim();
+                    const date = (row.date || '').trim();
+                    const pictures = row.pictures || [];
+                    
+                    const thumbnail = row.thumbnail || (pictures.length > 0 ? pictures[0] : null);
+
+                    return { title, desc, links, date, pictures, thumbnail };
+                });
+
+                carouselItemsData.forEach((item, index) => {
+                    let descPreview = item.desc.length > 90 ? item.desc.substring(0, 90) + '...' : item.desc;
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = 'carousel-item';
+                    itemDiv.innerHTML = `
+                        <div class="card cv-card" data-index="${index}">
+                            ${item.thumbnail ? `<img src="${item.thumbnail}" alt="${item.title}" class="carousel-img">` : `<div class="carousel-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem;">[NO IMAGE]</div>`}
+                            <h3 style="margin-top: 1rem;">${item.title}</h3>
+                            ${item.date ? `<span class="blog-date" style="display: block; margin-top: -0.25rem; margin-bottom: 0.5rem;">${item.date}</span>` : ''}
+                            <p>${descPreview}</p>
+                        </div>
+                    `;
+                    group.appendChild(itemDiv);
+                });
+
+                initCarouselMarquee();
+            } catch (err) {
+                console.error('Error fetching CV JSON Data:', err);
+                document.getElementById('marquee-group').innerHTML = '<p style="color: var(--text-secondary);">Failed to load portfolio items.</p>';
+            }
+        }
+
+        fetchCarouselData();
 
         // Fetch Medium Posts
         async function fetchMediumBlogs() {
@@ -223,6 +367,17 @@
         window.addEventListener('scroll', () => {
             document.body.style.setProperty('--scroll-offset', `${window.scrollY}px`);
         });
+
+        // Netlify Identity Redirect
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.on("init", user => {
+                if (!user) {
+                    window.netlifyIdentity.on("login", () => {
+                        document.location.href = "/admin/";
+                    });
+                }
+            });
+        }
     </script>
 </body>
 

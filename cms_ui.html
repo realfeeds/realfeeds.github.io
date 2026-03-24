@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domu Fidelis CMS Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --surface-color: #1e293b;
+            --surface-hover: #334155;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #a855f7;
+            --accent-hover: #c084fc;
+            --border-color: #334155;
+            --transition: 0.2s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin-inline: auto;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        .header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #c084fc, #a855f7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-hover));
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 14px 0 rgba(168, 85, 247, 0.39);
+            white-space: nowrap;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5);
+        }
+
+        .search-bar {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            width: 250px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        .search-bar:focus { outline: none; border-color: var(--accent-color); }
+        .header-actions { display: flex; gap: 1rem; align-items: center; }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            height: 100px;
+            padding: 0.5rem;
+        }
+        .project-card:hover { transform: translateX(4px); border-color: var(--accent-color); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); }
+        
+        .project-img {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            background-color: var(--border-color);
+            flex-shrink: 0;
+        }
+        
+        .project-info {
+            padding: 0 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .project-text {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .project-text h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 0.25rem;
+        }
+        
+        .project-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .project-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+
+        .tag-unlisted {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fca5a5;
+            font-size: 0.75rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 4px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .icon-btn {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            width: 32px; height: 32px;
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .icon-btn:hover:not(:disabled) { background: var(--surface-hover); color: var(--text-primary); }
+        .icon-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .edit-btn {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .edit-btn:hover { background: var(--accent-color); color: white; }
+
+        .delete-btn {
+            background: transparent;
+            border: 1px solid #ef4444;
+            color: #ef4444;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .delete-btn:hover { background: #ef4444; color: white; }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: flex-start;
+            padding: 2rem 1rem;
+            overflow-y: auto;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        
+        .modal-content {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%; max-width: 800px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            transform: translateY(20px);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+
+        .close-btn {
+            position: absolute; top: 1.5rem; right: 1.5rem;
+            background: none; border: none; font-size: 2.5rem; line-height:1; color: var(--text-secondary); cursor: pointer;
+            transition: color 0.2s;
+        }
+        .close-btn:hover { color: white; }
+
+        /* Form Styles reused from previous */
+        .form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem;}
+        .form-row { display: flex; gap: 1.5rem; }
+        .form-row .form-group { flex: 1; }
+        label { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
+        input[type="text"], textarea {
+            width: 100%; background-color: var(--surface-color); border: 1px solid var(--border-color);
+            color: var(--text-primary); border-radius: 8px; padding: 0.75rem 1rem; font-family: 'Inter', sans-serif; font-size: 1rem; transition: var(--transition);
+        }
+        input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--accent-color); }
+        textarea { resize: vertical; min-height: 120px; }
+        .checkbox-group { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; margin-top: 0.5rem; margin-bottom: 1.5rem; }
+        .checkbox-group input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent-color); cursor: pointer; }
+        .checkbox-group label { margin: 0; cursor: pointer; color: var(--text-primary); text-transform: none; letter-spacing: 0; font-size: 1rem;}
+
+        /* Image Uploader */
+        .image-section { margin-top: 2rem; padding-top: 2rem; border-top: 1px dashed var(--border-color); }
+        .image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem; }
+        .image-card { aspect-ratio: 1; background-color: var(--surface-color); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; }
+        .image-card img { width: 100%; height: 100%; object-fit: cover; }
+        .thumbnail-badge { position: absolute; top: 0.5rem; left: 0.5rem; background: rgba(168, 85, 247, 0.9); color: white; font-size: 0.7rem; padding: 0.2rem 0.5rem; border-radius: 4px; font-weight: 600; pointer-events: none; }
+        .remove-img { position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(239, 68, 68, 0.9); color: white; border: none; width: 24px; height: 24px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .remove-img:hover { transform: scale(1.1); }
+        .add-image-btn { aspect-ratio: 1; border: 2px dashed var(--border-color); border-radius: 8px; background: transparent; color: var(--text-secondary); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; transition: var(--transition); }
+        .add-image-btn:hover { border-color: var(--accent-color); color: var(--accent-color); background-color: rgba(168, 85, 247, 0.05); }
+        .add-image-btn svg { width: 32px; height: 32px; }
+        .submit-btn { width: 100%; margin-top: 3rem; background: linear-gradient(to right, var(--accent-color), var(--accent-hover)); color: white; border: none; padding: 1rem; font-size: 1.1rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: var(--transition); box-shadow: 0 4px 14px 0 rgba(168, 85, 247, 0.39); }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(168, 85, 247, 0.5); }
+        .submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        input[type="file"] { display: none; }
+        .toast { position: fixed; bottom: 2rem; right: 2rem; background-color: #10b981; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: 500; transform: translateY(100px); opacity: 0; transition: all 0.3s; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); z-index: 1000; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        .empty-state { text-align: center; color: var(--text-secondary); padding: 4rem; grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>Domu Fidelis CMS</h1>
+            <p style="color: var(--text-secondary);">Manage your portfolio entries</p>
+        </div>
+        <div class="header-actions">
+            <input type="text" id="searchInput" placeholder="Search titles..." class="search-bar">
+            <button class="btn-primary" id="openModalBtn">
+                <span style="font-size:1.1rem; vertical-align:middle; margin-right:4px;">+</span> Add Project
+            </button>
+        </div>
+    </div>
+
+    <div class="gallery" id="galleryContainer">
+        <div class="empty-state">Loading projects...</div>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <button class="close-btn" id="closeModalBtn">&times;</button>
+            <h2 style="margin-bottom: 2rem; font-size: 1.75rem;">Project Entry</h2>
+            
+            <form id="projectForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">Project Title</label>
+                        <input type="text" id="title" required placeholder="A brilliant new endeavor...">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="text" id="date" placeholder="e.g. March 2026">
+                    </div>
+                </div>
+                <div class="form-group" style="margin-top: 0.5rem;">
+                    <label for="link">External Link</label>
+                    <input type="text" id="link" placeholder="https://...">
+                </div>
+                <div class="form-group" style="margin-top: 1rem;">
+                    <label for="desc">Description</label>
+                    <textarea id="desc" required placeholder="Describe the project, its goals, and impact..."></textarea>
+                </div>
+                <div class="image-section">
+                    <label style="margin-bottom: 0.5rem; display: block;">Project Images</label>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">Add images from your device. The first image will automatically be used as the thumbnail.</p>
+                    <div class="image-grid" id="imageGrid">
+                        <button type="button" class="add-image-btn" id="addImgBtn">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            Add Image
+                        </button>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" multiple>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">Publish Project</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Successfully published!</div>
+
+    <script>
+        // Gallery Logic
+        const galleryContainer = document.getElementById('galleryContainer');
+        const defaultImgSVG = 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"%3E%3Crect fill="%231e293b" width="600" height="400"/%3E%3Ctext fill="%2394a3b8" font-family="sans-serif" font-size="24" dy="8.5" font-weight="bold" x="50%25" y="50%25" text-anchor="middle"%3ENo Image Provided%3C/text%3E%3C/svg%3E';
+
+        let currentProjects = [];
+        let editingIndex = -1;
+
+        async function fetchGallery() {
+            try {
+                const res = await fetch('data/portfolio.json?t=' + new Date().getTime());
+                const data = await res.json();
+                currentProjects = data.projects || [];
+                
+                galleryContainer.innerHTML = '';
+                
+                if (currentProjects.length === 0) {
+                    galleryContainer.innerHTML = '<div class="empty-state">No projects found. Add one!</div>';
+                    return;
+                }
+
+                currentProjects.forEach((project, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card';
+                    card.dataset.title = (project.title || '').toLowerCase();
+                    card.dataset.desc = (project.description || '').toLowerCase();
+                    
+                    const thumb = project.thumbnail || (project.pictures && project.pictures.length > 0 ? project.pictures[0] : null);
+                    const descPrev = project.description?.length > 100 ? project.description.substring(0, 100) + '...' : (project.description || '');
+                    
+                    let isFirst = index === 0;
+                    let isLast = index === currentProjects.length - 1;
+
+                    const imgTag = thumb 
+                        ? `<img src="${thumb}" class="project-img" alt="${project.title}">` 
+                        : `<div class="project-img" style="display:flex; align-items:center; justify-content:center; color:var(--text-secondary); font-weight:700; letter-spacing:0.1em; font-size:0.95rem;">[NO IMAGE]</div>`;
+
+                    card.innerHTML = `
+                        ${imgTag}
+                        <div class="project-info">
+                            <div class="project-text">
+                                <h3>${project.title} ${project.date ? `<span style="font-size: 0.8rem; color: var(--accent-color); margin-left: 0.5rem;\">${project.date}</span>` : ''}</h3>
+                                <p>${descPrev}</p>
+                            </div>
+                            <div class="project-meta">
+                                <div style="display: flex; flex-direction: column; gap: 0.25rem; margin-right: 0.5rem;">
+                                    <button class="icon-btn" title="Move Up" onclick="moveProject(${index}, -1)" ${isFirst ? 'disabled' : ''}>▲</button>
+                                    <button class="icon-btn" title="Move Down" onclick="moveProject(${index}, 1)" ${isLast ? 'disabled' : ''}>▼</button>
+                                </div>
+                                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; margin-right: 0.5rem; font-size: 0.85rem; color: var(--text-secondary);">
+                                    <input type="checkbox" style="accent-color: var(--accent-color); width: 1.15rem; height: 1.15rem;" ${project.unlisted ? 'checked' : ''} onchange="toggleUnlisted(${index}, this.checked)">
+                                    Unlisted
+                                </label>
+                                <button class="edit-btn" onclick="openEdit(${index})">Edit</button>
+                                <button class="delete-btn" onclick="deleteProject(${index})">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                    galleryContainer.appendChild(card);
+                });
+                
+                // re-apply search if it was typed
+                triggerSearch();
+            } catch (err) {
+                console.error(err);
+                galleryContainer.innerHTML = '<div class="empty-state">Unable to load projects.</div>';
+            }
+        }
+
+        // Search logic
+        const searchInput = document.getElementById('searchInput');
+        function triggerSearch() {
+            const query = searchInput.value.toLowerCase();
+            const cards = galleryContainer.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                const txt = card.dataset.title + " " + card.dataset.desc;
+                card.style.display = txt.includes(query) ? 'flex' : 'none';
+            });
+        }
+        searchInput.addEventListener('input', triggerSearch);
+
+        window.moveProject = async function(index, direction) {
+            try {
+                const res = await fetch('/api/move_project', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ index, direction })
+                });
+                if (res.ok) fetchGallery();
+            } catch (err) { console.error(err); }
+        };
+
+        window.toggleUnlisted = async function(index, checked) {
+            try {
+                // we technically can edit the project completely or call the specific endpoint
+                await fetch('/api/toggle_unlisted', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ index, unlisted: checked })
+                });
+            } catch (err) { console.error(err); }
+        };
+
+        window.openEdit = function(index) {
+            const p = currentProjects[index];
+            editingIndex = index;
+            document.getElementById('title').value = p.title || '';
+            document.getElementById('date').value = p.date || '';
+            document.getElementById('link').value = p.link || '';
+            document.getElementById('desc').value = p.description || '';
+            
+            pictures = (p.pictures || []).map(url => ({
+                type: 'url',
+                value: url
+            }));
+            
+            renderImages();
+            document.getElementById('modalOverlay').classList.add('active');
+        };
+
+        window.deleteProject = async function(index) {
+            if (!confirm("Are you sure you want to permanently delete this project?")) return;
+            try {
+                const res = await fetch('/api/delete_project', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ index })
+                });
+                if (res.ok) fetchGallery();
+                else alert('Failed to delete project.');
+            } catch (err) {
+                console.error(err);
+                alert('Connection error. Is the server running?');
+            }
+        };
+
+        fetchGallery();
+
+        // Modal Logic
+        const modalOverlay = document.getElementById('modalOverlay');
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        
+        openModalBtn.addEventListener('click', () => {
+            editingIndex = -1;
+            form.reset();
+            pictures = [];
+            renderImages();
+            modalOverlay.classList.add('active');
+        });
+        closeModalBtn.addEventListener('click', () => modalOverlay.classList.remove('active'));
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) modalOverlay.classList.remove('active');
+        });
+
+        // Form Logic
+        const imageGrid = document.getElementById('imageGrid');
+        const addImgBtn = document.getElementById('addImgBtn');
+        const fileInput = document.getElementById('fileInput');
+        const form = document.getElementById('projectForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toast');
+        
+        let pictures = [];
+
+        addImgBtn.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (!files.length) return;
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    pictures.push({
+                        type: 'file',
+                        filename: file.name,
+                        base64: ev.target.result
+                    });
+                    renderImages();
+                };
+                reader.readAsDataURL(file);
+            });
+            fileInput.value = '';
+        });
+
+        function renderImages() {
+            const cards = imageGrid.querySelectorAll('.image-card');
+            cards.forEach(c => c.remove());
+
+            pictures.forEach((pic, index) => {
+                const div = document.createElement('div');
+                div.className = 'image-card';
+                
+                const img = document.createElement('img');
+                img.src = pic.base64 || pic.value;
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-img';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.type = 'button';
+                removeBtn.onclick = () => {
+                    pictures.splice(index, 1);
+                    renderImages();
+                };
+
+                div.appendChild(img);
+                div.appendChild(removeBtn);
+
+                if (index === 0) {
+                    const badge = document.createElement('span');
+                    badge.className = 'thumbnail-badge';
+                    badge.textContent = 'Thumbnail';
+                    div.appendChild(badge);
+                }
+
+                imageGrid.insertBefore(div, addImgBtn);
+            });
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // The "unlisted" toggle is now solely done via the main UI toggle button, but we must 
+            // still fetch it correctly if we are updating a project. If it's a new project, we default to false.
+            // Wait, we removed the checkbox from the form UI! 
+            // Let's assume it defaults to false on creation, and handles existing value for edits.
+            let isUnlisted = false;
+            if (editingIndex >= 0 && currentProjects[editingIndex]) {
+                isUnlisted = currentProjects[editingIndex].unlisted || false;
+            }
+            
+            const payload = {
+                index: editingIndex,
+                title: document.getElementById('title').value,
+                date: document.getElementById('date').value,
+                description: document.getElementById('desc').value,
+                link: document.getElementById('link').value,
+                unlisted: isUnlisted,
+                pictures: pictures
+            };
+
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Publishing...';
+            submitBtn.disabled = true;
+
+            try {
+                const res = await fetch('/api/add_project', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (res.ok) {
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 3000);
+                    
+                    form.reset();
+                    pictures = [];
+                    renderImages();
+                    modalOverlay.classList.remove('active');
+                    fetchGallery(); // Reload gallery!
+                } else {
+                    alert('Failed to publish.');
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Connection error. Is the server running?');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
