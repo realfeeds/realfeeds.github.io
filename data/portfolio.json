@@ -1,6 +1,17 @@
 {
   "projects": [
     {
+      "title": "YearBook 2024 Committee",
+      "date": "May 2024",
+      "description": "Wrote some articles for our yearbook",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/5bc79134.png"
+      ],
+      "thumbnail": "assets/images/5bc79134.png"
+    },
+    {
       "title": "Intern of Academics HIMATIKA",
       "date": "Oct 2025 - Mar 2026",
       "description": "Mostly problem archival and tutor management, I tutored too. We also did some one-off random stuff like problem proposals for another organization's competition.",
@@ -16,13 +27,13 @@
       "date": "2024",
       "description": "Physics tutoring. As a math student. Because we lacked physics tutors. Because physics is hard",
       "link": "",
-      "unlisted": false,
+      "unlisted": true,
       "pictures": []
     },
     {
       "title": "FOKUS 2025",
       "date": "Jun 2025",
-      "description": "Wow.",
+      "description": "Interruption! My favorite part was when ****** and ******. We also **** and **** for ******.",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -319,23 +330,30 @@
     {
       "title": "NEURONAL: Virtual Study Assistant",
       "date": "Apr 2024",
-      "description": "2nd best Final Project in product development (NEURONAL: Virtual Study Assistant)",
+      "description": "2nd best Final Project in product development (NEURONAL: Virtual Study Assistant). An LLM-based study buddy before it was cool",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/717a9c4b.png",
+        "assets/images/2501afdf.png"
+      ],
+      "thumbnail": "assets/images/717a9c4b.png"
     },
     {
       "title": "Best Graduate of XII-IPA",
       "date": "Apr 2024",
-      "description": "Highest overall academic performance",
+      "description": "Highest overall academic performance in XII-IPA",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/7981af29.png"
+      ],
+      "thumbnail": "assets/images/7981af29.png"
     },
     {
       "title": "Semifinalist CHIPS 2021",
-      "date": "2021",
-      "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving.",
+      "date": "Oct 2021",
+      "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -345,8 +363,8 @@
     },
     {
       "title": "Semifinalist CHIPS 2023",
-      "date": "2023",
-      "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving.",
+      "date": "Oct 2023",
+      "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -357,7 +375,7 @@
     {
       "title": "2nd Place CHIPS 2022",
       "date": "Nov 2022",
-      "description": "2nd Place National in Competition for High School in Informatics and Problem Solving.",
+      "description": "2nd Place National in Competition for High School in Informatics and Problem Solving",
       "link": "https://informatika.unpar.ac.id/chips/",
       "unlisted": false,
       "pictures": [

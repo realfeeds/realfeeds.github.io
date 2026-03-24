@@ -217,12 +217,13 @@
                     let groupWidth = group.offsetWidth;
                     if (groupWidth === 0) return; // skip empty groups
 
-                    // 100% Continuous Scrolling Fix: 
-                    // To avoid visual pop-ins, the base group width itself MUST be wider than the viewport 
-                    // before we calculate animation and clone the whole track.
-                    if (groupWidth < screenWidth * 1.5) {
+                    // 100% Continuous Scrolling Fix (Performance Safe): 
+                    // Mathematically deduce required copies to avoid while-loop layout recalculation crashes.
+                    const requiredWidth = screenWidth * 1.5;
+                    if (groupWidth < requiredWidth) {
                         const originalChildren = Array.from(group.children);
-                        while (group.offsetWidth < screenWidth * 1.5) {
+                        const copiesNeeded = Math.ceil(requiredWidth / groupWidth) - 1;
+                        for (let j = 0; j < copiesNeeded; j++) {
                             originalChildren.forEach(child => {
                                 group.appendChild(child.cloneNode(true));
                             });
@@ -315,7 +316,8 @@
 
         async function fetchCarouselData() {
             try {
-                const res = await fetch('data/portfolio.json');
+                // Fetch dynamic, newest data forcibly bypassing GitHub Page's aggressive cache
+                const res = await fetch('data/portfolio.json?t=' + Date.now().toString());
                 const data = await res.json();
 
                 const groups = [
