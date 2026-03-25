@@ -485,13 +485,25 @@
       "thumbnail": "assets/images/dd76229c.png"
     },
     {
+      "title": "Database for Buku Angkatan 2018",
+      "date": "2018",
+      "description": "App",
+      "link": "",
+      "unlisted": true,
+      "pictures": [
+        "assets/images/89e681a4.png"
+      ],
+      "thumbnail": "assets/images/89e681a4.png"
+    },
+    {
       "title": "Semifinalist AppJamming Summit 2018",
       "date": "2018",
-      "description": "Young app development themed around sustainability. Our Forest Fire game made it to national selection (semifinal)",
+      "description": "An international young app development themed around sustainability. Our Forest Fire game made it to national selection (semifinal), in which we got First Runner Up! One place short from representing Indonesia",
       "link": "",
       "unlisted": false,
       "pictures": [
-        "assets/images/d92f2063.png"
+        "assets/images/d92f2063.png",
+        "assets/images/c2ec931d.jpg"
       ],
       "thumbnail": "assets/images/d92f2063.png"
     }
