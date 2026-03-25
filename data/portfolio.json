@@ -1,6 +1,28 @@
 {
   "projects": [
     {
+      "title": "1st Runner Up Indonesian Robo Fest 2016",
+      "date": "",
+      "description": "Grab bot",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/6a73f443.png"
+      ],
+      "thumbnail": "assets/images/6a73f443.png"
+    },
+    {
+      "title": "Chess Club",
+      "date": "",
+      "description": "Klub Catur Kuntum Cemerlang (KCKC). Sort of a founder(?) but most of it was my mom, I was just a kid who liked chess",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/ec92325d.png"
+      ],
+      "thumbnail": "assets/images/ec92325d.png"
+    },
+    {
       "title": "Bandung SketchWalk",
       "date": "",
       "description": "Sketching Bandung, the most romantic city in all of Indonesia",
@@ -82,7 +104,7 @@
       "title": "1st Place KM2N",
       "date": "Nov 2025",
       "description": "1st place national in a duo-based calculus competition hosted by GMM UPI",
-      "link": "",
+      "link": "https://www.instagram.com/p/DSSCBJ4EnKy/",
       "unlisted": false,
       "pictures": [
         "assets/images/a5baf439.png",
@@ -102,7 +124,7 @@
       "title": "Informative Content Staff for Fourier Media",
       "date": "Oct 2025",
       "description": "Drafted pop mathematics content for Fourier Media 13. Really happy with my work cause I get to do mathematical exposition on topics that interest me, and having mathematics more widespread is always nice!",
-      "link": "",
+      "link": "https://www.instagram.com/fourier_media/",
       "unlisted": false,
       "pictures": [
         "assets/images/34bc952f.png"
@@ -159,7 +181,7 @@
       "title": "3rd Place IMC 2025: Study Case",
       "date": "Oct 2025",
       "description": "Team-based competition and training in applied mathematics",
-      "link": "",
+      "link": "https://www.instagram.com/imcipb/",
       "unlisted": false,
       "pictures": [
         "assets/images/87b35ae8.png"
@@ -216,7 +238,7 @@
       "title": "Most Outstanding First Year Student of FMIPA",
       "date": "Aug 2025",
       "description": "Absolute best academic performance among 400+ ITB's Mathematics and Natural Science (FMIPA) students during the first year",
-      "link": "",
+      "link": "https://www.detik.com/edu/sekolah/d-8061482/lulusan-sma-sma-ini-raih-predikat-mahasiswa-terbaik-itb-ada-sekolahmu",
       "unlisted": false,
       "pictures": [
         "assets/images/093165dc.png",
@@ -228,7 +250,7 @@
       "title": "Tutor and Subject Matter Writer for Gradient",
       "date": "Jul 2025",
       "description": "Reached out as one of the first live-class tutors for Gradient Academy. I taught mathematics for ITB's pretest (algebra and precalc mostly) with overall positive feedback. I also contributed to their problem bank via problem transcription and solution writing.",
-      "link": "",
+      "link": "https://gradient.academy",
       "unlisted": false,
       "pictures": [
         "assets/images/eba42e13.png",
@@ -262,7 +284,7 @@
       "title": "Best Materials and Methods Staff SCIENTIA 2025",
       "date": "Jun 2025 - Aug 2025",
       "description": "Student-led orientation for ITB's Faculty of Mathematics and Natural Sciences (FMIPA). Curated materials for new students, assessed their work, and designed games for Scientia \u201925. I worked particularly hard for this, especially in meetings and idea development :)",
-      "link": "",
+      "link": "https://www.instagram.com/p/DL7HiCmTryL/",
       "unlisted": false,
       "pictures": [
         "assets/images/e95622c0.png",
@@ -295,7 +317,7 @@
       "title": "Tanoto Scholar '25",
       "date": "Jan 2025",
       "description": "Awardee of the TELADAN Scholarship and Leadership Program. Very competitive selection (~2% acceptance rate) based on academic, leadership, and social-impact potential",
-      "link": "",
+      "link": "https://www.tanotofoundation.org/initiative/teladan/",
       "unlisted": false,
       "pictures": [
         "assets/images/29df86c6.png",
@@ -306,8 +328,8 @@
     {
       "title": "Student Volunteer for IASFM 2025",
       "date": "Jan 2025",
-      "description": "International Association for the Study of Forced Migration Conference 2025. Translated for panels. In particular, SMK's was about the role of literary works in displacement issues. Interviewed and documented international panelists and attendees, gaining insight into global forced displacement issues",
-      "link": "",
+      "description": "Translator and Podcast Staff in the International Association for the Study of Forced Migration Conference 2025. Interviewed international panelists and attendees. Live translation of panels, in particular, SMK's was about the role of literary works in displacement issues.",
+      "link": "https://iasfm.org/iasfm2025/",
       "unlisted": false,
       "pictures": [
         "assets/images/76c8d525.png",
@@ -341,7 +363,7 @@
       "date": "May 2024",
       "description": "Wrote some articles for our 90's-magazine-themed yearbook",
       "link": "",
-      "unlisted": true,
+      "unlisted": false,
       "pictures": [
         "assets/images/5bc79134.png",
         "assets/images/abf5dd8f.png"
@@ -376,9 +398,9 @@
     },
     {
       "title": "Ganesha Award ITB Project Exhibit",
-      "date": "2024",
-      "description": "Our project for Pancasila class was one of the few selected to be presented at Ganesha Award Project Exhibit",
-      "link": "",
+      "date": "Nov 2024",
+      "description": "Our phytoremediation project for Pancasila class was one of the few selected to be presented at Ganesha Award Project Exhibit",
+      "link": "https://itb.ac.id/berita/detail/61721/ganesha-award-x-pameran-karya-itb-2024-apresiasi-mahasiswa-berprestasi-dan-karya-kreatif-mahasiswa",
       "unlisted": false,
       "pictures": [
         "assets/images/2739a9f7.png"
@@ -497,15 +519,28 @@
     },
     {
       "title": "Semifinalist AppJamming Summit 2018",
-      "date": "2018",
+      "date": "Mar 2018",
       "description": "An international young app development themed around sustainability. Our Forest Fire game made it to national selection (semifinal), in which we got First Runner Up! One place short from representing Indonesia",
-      "link": "",
+      "link": "https://youtu.be/Z9YZp5b4bTc?si=85GBfLV2SLu6LbBl",
       "unlisted": false,
       "pictures": [
         "assets/images/d92f2063.png",
         "assets/images/c2ec931d.jpg"
       ],
       "thumbnail": "assets/images/d92f2063.png"
+    },
+    {
+      "title": "1st Place Efest Pekan Teknik 2017",
+      "date": "May 2017",
+      "description": "Grab bot",
+      "link": "https://news.maranatha.edu/efest-pekan-teknik-2017/",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/8b8b98ec.png",
+        "assets/images/9e49bfb7.png",
+        "assets/images/b4fb6fa4.png"
+      ],
+      "thumbnail": "assets/images/8b8b98ec.png"
     }
   ]
 }
