@@ -22,7 +22,7 @@
     {
       "title": "Assistant Facilitator for Lead Self Program 2026",
       "date": "Jan 2026",
-      "description": "The only assistant facilitator from ITB this year. I assess and guide Group 3 of Cohort '26 Tanoto Scholars",
+      "description": "The only assistant facilitator from ITB this year. I assess and guide Group 3 of Cohort '26 Tanoto Scholars. We had coaching training within the context of self-discovery",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -34,7 +34,7 @@
     {
       "title": "Best Sikomat Practicant",
       "date": "Dec 2025",
-      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum. I got >95 for each module except this one time I didn't submit properly, whoops",
+      "description": "Best overall performance for my shift's Mathematical Simulation and Computation practicum. I got a score of >95 for each module except this one time I didn't submit properly, whoops",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -68,7 +68,7 @@
     {
       "title": "Regional Camp 2025",
       "date": "Nov 2025",
-      "description": "3-day camp from TELADAN's Lead Self Program. Super fun material, discussions, and... \"challenges\"",
+      "description": "3-day camp from TELADAN's Lead Self Program at Sentul along with UI and IPB scholars. Very fun discussions, and... \"challenges\"",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -81,11 +81,12 @@
     {
       "title": "1st Place KM2N",
       "date": "Nov 2025",
-      "description": "Calculus competition hosted by GMM UPI. Imran carried me throughout the online elimination round and I carried during the on-site finale.",
+      "description": "1st place national in a duo-based calculus competition hosted by GMM UPI",
       "link": "",
       "unlisted": false,
       "pictures": [
-        "assets/images/a5baf439.png"
+        "assets/images/a5baf439.png",
+        "assets/images/57c9935e.png"
       ],
       "thumbnail": "assets/images/a5baf439.png"
     },
@@ -100,7 +101,7 @@
     {
       "title": "Informative Content Staff for Fourier Media",
       "date": "Oct 2025",
-      "description": "Pop Mathematics exposition",
+      "description": "Drafted pop mathematics content for Fourier Media 13. Really happy with my work cause I get to do mathematical exposition on topics that interest me, and having mathematics more widespread is always nice!",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -122,15 +123,18 @@
     {
       "title": "Computational Thinking Practicum Assistant",
       "date": "Oct 2025",
-      "description": "Computational Thinking (Python) Practicum Assistant",
+      "description": "Monitored and evaluated four (online) Python practicums for ~60 first-years, along side a co-assistant from the informatics department. The modules were on basic computational thinking such as conditionals, loops, and recursion.",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/26fd1d65.png"
+      ],
+      "thumbnail": "assets/images/26fd1d65.png"
     },
     {
       "title": "Liaison Officer for October Graduation Parade",
       "date": "Oct 2025",
-      "description": "LO",
+      "description": "HI. MA. TI. KA. SAM. PAI. MAM. PUS.",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -163,9 +167,9 @@
       "thumbnail": "assets/images/87b35ae8.png"
     },
     {
-      "title": "FMIPA Dean's List 2024",
+      "title": "FMIPA Mahasiswa Berprestasi Akademik",
       "date": "Sep 2025",
-      "description": "4.0 GPA for semester 1 and 2",
+      "description": "4.0 GPA for the first and second semester",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -290,7 +294,7 @@
     {
       "title": "Tanoto Scholar '25",
       "date": "Jan 2025",
-      "description": "TELADAN Scholarship and Leadership Program awardee",
+      "description": "Awardee of the TELADAN Scholarship and Leadership Program. Very competitive selection (~2% acceptance rate) based on academic, leadership, and social-impact potential",
       "link": "",
       "unlisted": false,
       "pictures": [
@@ -337,7 +341,7 @@
       "date": "May 2024",
       "description": "Wrote some articles for our 90's-magazine-themed yearbook",
       "link": "",
-      "unlisted": false,
+      "unlisted": true,
       "pictures": [
         "assets/images/5bc79134.png",
         "assets/images/abf5dd8f.png"
@@ -359,14 +363,16 @@
     {
       "title": "Best Graduate of XII-IPA",
       "date": "Apr 2024",
-      "description": "Highest overall academic performance in XII-IPA",
+      "description": "Highest overall academic performance in XII-IPA SKC 2024",
       "link": "",
       "unlisted": false,
       "pictures": [
+        "assets/images/a40c175c.png",
         "assets/images/7981af29.png",
-        "assets/images/25fb8e56.png"
+        "assets/images/25fb8e56.png",
+        "assets/images/ff682f9d.png"
       ],
-      "thumbnail": "assets/images/7981af29.png"
+      "thumbnail": "assets/images/a40c175c.png"
     },
     {
       "title": "Ganesha Award ITB Project Exhibit",
@@ -402,7 +408,7 @@
       "title": "Semifinalist CHIPS 2023",
       "date": "Oct 2023",
       "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving",
-      "link": "",
+      "link": "https://informatika.unpar.ac.id/chips/chips-2023/",
       "unlisted": false,
       "pictures": [
         "assets/images/4cfa6be4.png"
@@ -424,18 +430,19 @@
       "title": "2nd Place CHIPS 2022",
       "date": "Nov 2022",
       "description": "2nd Place National in Competition for High School in Informatics and Problem Solving",
-      "link": "https://informatika.unpar.ac.id/chips/",
+      "link": "https://informatika.unpar.ac.id/chips/chips-2022/",
       "unlisted": false,
       "pictures": [
+        "assets/images/2f878958.png",
         "assets/images/60ff4db0.png"
       ],
-      "thumbnail": "assets/images/60ff4db0.png"
+      "thumbnail": "assets/images/2f878958.png"
     },
     {
       "title": "Semifinalist CHIPS 2021",
       "date": "Oct 2021",
       "description": "Semifinalist National in Competition for High School in Informatics and Problem Solving",
-      "link": "",
+      "link": "https://informatika.unpar.ac.id/chips/chips-2021/",
       "unlisted": false,
       "pictures": [
         "assets/images/f306b57c.png"
@@ -445,8 +452,8 @@
     {
       "title": "2nd Place \"Ayo Bikin Game di Rumah Aja\"",
       "date": "Apr 2020",
-      "description": "Game making competition during the pandemic, social-distancing awareness",
-      "link": "",
+      "description": "Game making competition hosted by Kominfo, Telkomsel, and Clevio during the pandemic, for social-distancing awareness. Gavin and I made Social Distancing: The Game",
+      "link": "https://www.komdigi.go.id/berita/pengumuman/detail/siaran-pers-no-56-hm-kominfo-04-2020-tentang-game-terbaik-ajang-cipta-game-ayo-bikin-game-di-rumah-aja",
       "unlisted": false,
       "pictures": [
         "assets/images/6afd7165.png"
@@ -456,24 +463,26 @@
     {
       "title": "2nd Place Bebras Challenge 2019",
       "date": "Nov 2019",
-      "description": "National computational thinking challenge",
-      "link": "",
+      "description": "Ranked 98.46% national in a national computational thinking challenge",
+      "link": "https://bebras.or.id/v3/pengumuman-hasil-bebras-indonesia-challenge-2019/",
       "unlisted": false,
       "pictures": [
+        "assets/images/87fef5c3.png",
         "assets/images/b3e017c6.png"
       ],
-      "thumbnail": "assets/images/b3e017c6.png"
+      "thumbnail": "assets/images/87fef5c3.png"
     },
     {
       "title": "Champion Indonesia Robo Fest 2018",
       "date": "Nov 2018",
-      "description": "Decathlon Robot",
-      "link": "",
+      "description": "1st place national in a robotics competition from Universitas Kristen Maranatha. We won the Decathlon Robot division.",
+      "link": "https://news.maranatha.edu/indonesia-robo-fest-2018/",
       "unlisted": false,
       "pictures": [
+        "assets/images/dd76229c.png",
         "assets/images/d6a85b89.png"
       ],
-      "thumbnail": "assets/images/d6a85b89.png"
+      "thumbnail": "assets/images/dd76229c.png"
     }
   ]
 }
