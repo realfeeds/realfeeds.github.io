@@ -483,6 +483,17 @@
         "assets/images/d6a85b89.png"
       ],
       "thumbnail": "assets/images/dd76229c.png"
+    },
+    {
+      "title": "Semifinalist AppJamming Summit 2018",
+      "date": "2018",
+      "description": "Young app development themed around sustainability. Our Forest Fire game made it to national selection (semifinal)",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/d92f2063.png"
+      ],
+      "thumbnail": "assets/images/d92f2063.png"
     }
   ]
 }
