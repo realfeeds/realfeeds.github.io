@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "title": "1st Runner Up Indonesian Robo Fest 2016",
-      "date": "",
-      "description": "Grab bot",
-      "link": "",
-      "unlisted": false,
-      "pictures": [
-        "assets/images/6a73f443.png"
-      ],
-      "thumbnail": "assets/images/6a73f443.png"
-    },
-    {
       "title": "Chess Club",
       "date": "",
       "description": "Klub Catur Kuntum Cemerlang (KCKC). Sort of a founder(?) but most of it was my mom, I was just a kid who liked chess",
@@ -351,12 +340,28 @@
       "thumbnail": "assets/images/da4b6aa7.png"
     },
     {
-      "title": "Deutsches Sprachdiplom I",
-      "date": "Jun 2024",
-      "description": "A2 und B1!",
+      "title": "Ganesha Award ITB Project Exhibit",
+      "date": "Nov 2024",
+      "description": "Our phytoremediation project for Pancasila class was one of the few selected to be presented at Ganesha Award Project Exhibit",
+      "link": "https://itb.ac.id/berita/detail/61721/ganesha-award-x-pameran-karya-itb-2024-apresiasi-mahasiswa-berprestasi-dan-karya-kreatif-mahasiswa",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/2739a9f7.png"
+      ],
+      "thumbnail": "assets/images/2739a9f7.png"
+    },
+    {
+      "title": "Deutsches Sprachdiplom I B1",
+      "date": "Aug 2024",
+      "description": "german",
       "link": "",
       "unlisted": false,
-      "pictures": []
+      "pictures": [
+        "assets/images/42a4f022.png",
+        "assets/images/46bff83e.png",
+        "assets/images/5bbd5bc9.png"
+      ],
+      "thumbnail": "assets/images/42a4f022.png"
     },
     {
       "title": "YearBook 2024 Committee",
@@ -397,17 +402,6 @@
       "thumbnail": "assets/images/a40c175c.png"
     },
     {
-      "title": "Ganesha Award ITB Project Exhibit",
-      "date": "Nov 2024",
-      "description": "Our phytoremediation project for Pancasila class was one of the few selected to be presented at Ganesha Award Project Exhibit",
-      "link": "https://itb.ac.id/berita/detail/61721/ganesha-award-x-pameran-karya-itb-2024-apresiasi-mahasiswa-berprestasi-dan-karya-kreatif-mahasiswa",
-      "unlisted": false,
-      "pictures": [
-        "assets/images/2739a9f7.png"
-      ],
-      "thumbnail": "assets/images/2739a9f7.png"
-    },
-    {
       "title": "FMIPA '24 Peer Tutor",
       "date": "2024",
       "description": "Physics tutoring. As a math student. Because we lacked physics tutors. Because physics is hard",
@@ -436,6 +430,19 @@
         "assets/images/4cfa6be4.png"
       ],
       "thumbnail": "assets/images/4cfa6be4.png"
+    },
+    {
+      "title": "Deutsches Sprachdiplom I A2",
+      "date": "Jul 2023",
+      "description": "german",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/fb2d96c5.png",
+        "assets/images/4ab5de4d.png",
+        "assets/images/226fb763.png"
+      ],
+      "thumbnail": "assets/images/fb2d96c5.png"
     },
     {
       "title": "Student Body SMA SKC",
@@ -507,17 +514,6 @@
       "thumbnail": "assets/images/dd76229c.png"
     },
     {
-      "title": "Database for Buku Angkatan 2018",
-      "date": "2018",
-      "description": "App",
-      "link": "",
-      "unlisted": true,
-      "pictures": [
-        "assets/images/89e681a4.png"
-      ],
-      "thumbnail": "assets/images/89e681a4.png"
-    },
-    {
       "title": "Semifinalist AppJamming Summit 2018",
       "date": "Mar 2018",
       "description": "An international young app development themed around sustainability. Our Forest Fire game made it to national selection (semifinal), in which we got First Runner Up! One place short from representing Indonesia",
@@ -528,6 +524,17 @@
         "assets/images/c2ec931d.jpg"
       ],
       "thumbnail": "assets/images/d92f2063.png"
+    },
+    {
+      "title": "Database for Buku Angkatan 2018",
+      "date": "2018",
+      "description": "App",
+      "link": "",
+      "unlisted": true,
+      "pictures": [
+        "assets/images/89e681a4.png"
+      ],
+      "thumbnail": "assets/images/89e681a4.png"
     },
     {
       "title": "1st Place E-fest Pekan Teknik 2017",
@@ -541,6 +548,17 @@
         "assets/images/b4fb6fa4.png"
       ],
       "thumbnail": "assets/images/8b8b98ec.png"
+    },
+    {
+      "title": "1st Runner Up Indonesian Robo Fest 2016",
+      "date": "2016",
+      "description": "Grab bot",
+      "link": "",
+      "unlisted": false,
+      "pictures": [
+        "assets/images/6a73f443.png"
+      ],
+      "thumbnail": "assets/images/6a73f443.png"
     }
   ]
 }
